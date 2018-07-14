@@ -25,9 +25,13 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    @classmethod
-    def comment(self):
-        return self.comments.all()
+    @property
+    def comments_list(self):
+        return self.comments.filter(is_displayed=True)
+
+    @property
+    def total_comments(self):
+        return self.comments_list.count()
 
     class Meta:
         indexes = [models.Index(fields=['slug'])]

@@ -4,10 +4,21 @@ from post.models import Post
 from api.comment.serializers import CommentSerializer
 
 
-class PostSerializer(serializers.ModelSerializer):
-    """DRF Serializer for the Post Model"""
+class PostListSerializer(serializers.ModelSerializer):
+    """DRF Serializer Listing All The Blog Posts"""
 
-    comments = CommentSerializer(many=True)
+    total_comments = serializers.IntegerField()
+
+    class Meta:
+        model = Post
+        fields = '__all__'
+
+
+
+class PostDetailSerializer(serializers.ModelSerializer):
+    """DRF Serializer For Details Of The Blog Posts"""
+
+    comments_list = CommentSerializer(many=True)
 
     class Meta:
         model = Post
