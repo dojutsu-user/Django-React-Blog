@@ -9,3 +9,11 @@ class PostListView(generics.ListAPIView):
     queryset = Post.objects.filter(is_published=True)
     serializer_class = PostSerializer
     lookup_field = 'slug'
+
+
+class PostDetailView(generics.RetrieveAPIView):
+    """View For The Details Of A Single Post"""
+
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    lookup_field = 'slug'

@@ -16,4 +16,4 @@ class Comment(models.Model):
     published_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Post - {self.post.title}, Body - {self.body}'
+        return f'Post - "{self.post.title}", Body - "{self.body}"'
