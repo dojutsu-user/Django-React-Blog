@@ -25,6 +25,10 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    @classmethod
+    def comment(self):
+        return self.comments.all()
+
     class Meta:
         indexes = [models.Index(fields=['slug'])]
 

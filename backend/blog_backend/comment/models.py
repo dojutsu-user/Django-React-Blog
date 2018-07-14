@@ -11,7 +11,7 @@ class Comment(models.Model):
     website = models.URLField(blank=True, null=True)
     body = models.TextField()
     post = models.ForeignKey(Post, on_delete=models.CASCADE,
-                             related_name='comment', related_query_name='comments')
+                             related_name='comments', related_query_name='comment')
     is_displayed = models.BooleanField(default=True)
     published_on = models.DateTimeField(auto_now_add=True)
 
