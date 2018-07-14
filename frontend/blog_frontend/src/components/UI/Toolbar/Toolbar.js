@@ -6,7 +6,7 @@ import cssClass from "./Toolbar.css"
 const toolbar = props => {
     return (
         <div className={cssClass.Toolbar}>
-            <NavigationItems />
+            <NavigationItems /> 
         </div>
     )
 };

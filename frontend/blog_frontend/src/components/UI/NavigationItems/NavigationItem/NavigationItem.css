@@ -1,6 +1,33 @@
 .Item {
+    display: block;
     list-style-type: none;
-    padding-right: 20px;
-    padding-top: 10px;
+    padding-right: 46px;
+    padding-top: 24px;
     float: right;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.Item.active {
+    color: rgb(138, 245, 111);
+}
+
+.Item:hover {
+    color: rgb(138, 245, 111);
+}
+
+.Item::after {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 0;
+    background: transparent;
+    transition: width 0.5s ease, background-color 0.5s ease;
+}
+
+.Item:hover:after {
+    width: 100%;
+    background: rgb(138, 245, 111);
 }

@@ -1,5 +1,5 @@
 .Toolbar {
     width: 100%;
-    height: 40px;
-    background-color: yellow;
+    height: 68px;
+    box-shadow: 0 3px 2px #ccc;
 }
