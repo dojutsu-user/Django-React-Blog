@@ -1,5 +1,6 @@
 .Item {
     display: block;
+    font-family: 'PT Sans', sans-serif;
     list-style-type: none;
     padding-right: 46px;
     padding-top: 24px;
@@ -11,11 +12,11 @@
 }
 
 .Item.active {
-    color: rgb(138, 245, 111);
+    color: rgb(0, 183, 255);
 }
 
 .Item:hover {
-    color: rgb(138, 245, 111);
+    color: rgb(0, 183, 255);
 }
 
 .Item::after {
@@ -29,5 +30,5 @@
 
 .Item:hover:after {
     width: 100%;
-    background: rgb(138, 245, 111);
+    background: rgb(0, 183, 255);
 }
