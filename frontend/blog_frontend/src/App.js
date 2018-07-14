@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 
 import cssClass from "./App.css";
+import Layout from "./hoc/Layout/Layout";
 
 class App extends Component {
     render() {
         return (
             <div className={cssClass.App}>
-                <h1>Hello World</h1>
+                <Layout>Hello</Layout>
             </div>
         );
     }
