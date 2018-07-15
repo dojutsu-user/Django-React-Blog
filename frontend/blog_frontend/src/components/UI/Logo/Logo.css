@@ -1,9 +1,10 @@
 .Logo {
-    font-family: 'Croissant One', cursive;
+    font-family: 'Cardo', serif;
     float: left;
     font-size: 30px;
     padding-left: 20px;
     padding-top: 10px;
+    padding-right: 5px;
 }
 
 @media (max-width: 390px) {
