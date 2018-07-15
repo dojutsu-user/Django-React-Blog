@@ -4,6 +4,7 @@ import Aux from "../Aux/Aux";
 import Toobar from "../../components/UI/Toolbar/Toolbar";
 import Sidebar from "../../components/UI/Sidebar/Sidebar";
 import Logo from "../../components/UI/Logo/Logo";
+import Backdrop from "../../components/UI/Backdrop/Backdrop";
 
 class Layout extends Component {
     state = {
@@ -23,6 +24,10 @@ class Layout extends Component {
                 <Logo />
                 <Toobar clicked={this.SidebarToggleHandler} />
                 <Sidebar isSidebarOpen={this.state.isSidebarOpen} />
+                <Backdrop
+                    isSidebarOpen={this.state.isSidebarOpen}
+                    clicked={this.SidebarToggleHandler}
+                />
                 <main>{this.props.children}</main>
             </Aux>
         );
