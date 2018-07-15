@@ -3,10 +3,9 @@ import React from "react";
 import Post from "./Post/Post";
 
 const posts = props => {
-    console.log(props.postList);
     const postList = props.postList.map(post => (
         <Post
-            key={post.id}
+            key={post.slug}
             title={post.title}
             datePublished={post.published_on}
             totalComments={post.total_comments}
