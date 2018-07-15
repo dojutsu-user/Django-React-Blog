@@ -128,3 +128,4 @@ backend/blog_backend/comment/migrations/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+backend/blog_backend/.vscode/settings.json
