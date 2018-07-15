@@ -1,5 +1,5 @@
 .HR {
     border: 0;
     height: 1px;
-    background-image: linear-gradient(left, #f0f0f0, #8c8c8c, #f0f0f0);
+    background-image: linear-gradient(to left, #f0f0f0, #8c8c8c, #f0f0f0);
 }
