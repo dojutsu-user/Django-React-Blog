@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import NavigationItem from "./NavigationItem/NavigationItem";
 import cssClass from "./NavigationItems.css";
@@ -8,9 +9,11 @@ const navigationItems = props => {
         <div className={cssClass.NavigationItems}>
             <ul className={cssClass.UnorderList}>
                 <span className={cssClass.NavigationItems}>
-                    <NavigationItem active>Home</NavigationItem>
-                    <NavigationItem>About Author</NavigationItem>
-                    <NavigationItem>Portfolio</NavigationItem>
+                    <Link style={{ textDecoration: "none" }} to="/">
+                        <NavigationItem active>Home</NavigationItem>
+                    </Link>
+                    <Link style={{ textDecoration: "none" }} to="/about-author/"><NavigationItem>About Author</NavigationItem></Link>
+                    <Link style={{ textDecoration: "none" }} to="/author-portfolio/"><NavigationItem>Portfolio</NavigationItem></Link>
                 </span>
             </ul>
         </div>
