@@ -7,7 +7,7 @@
     left: 0;
     background-color: white;
     overflow-x: hidden;
-    padding-top: 20px;
+    padding-top: 90px;
     box-shadow: 0 2px 4px #ccc;
     transition: all 0.3s ease-out;
 }
@@ -20,7 +20,7 @@
     transform: translateX(-110%)
 }
 
-@media (max-width: 340px) {
+@media (max-width: 390px) {
     .Sidebar {
         width: 200px;
     }

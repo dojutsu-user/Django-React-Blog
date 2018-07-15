@@ -3,6 +3,10 @@
     height: 68px;
     box-shadow: 0 3px 2px #ccc;
     background-color: white;
+    top: 0;
+    left: 0;
+    position: fixed;
+    margin-bottom: 20px;
 }
 
 .HamburgerIcon {
