@@ -11,6 +11,7 @@ const posts = props => {
             datePublished={post.published_on}
             totalComments={post.total_comments}
             author={post.author}
+            short_description={post.short_description}
         />
     ));
     return <div>{postList}</div>;

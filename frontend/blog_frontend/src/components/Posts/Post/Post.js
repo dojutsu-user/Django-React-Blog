@@ -40,7 +40,7 @@ const post = props => {
             <h1 className={h1Class.join(" ")}>{props.title}</h1>
             <div className={articleDivClass.join(" ")}>
                 <p className={articlePClass.join(" ")}>
-                    {props.shortDescription}
+                    {props.short_description}
                     </p>
                     <button className={cssClass.ReadFullPost}>
                         Read Full Post
