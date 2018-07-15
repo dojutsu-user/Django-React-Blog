@@ -34,6 +34,10 @@ class Post(models.Model):
     def total_comments(self):
         return self.comments_list.count()
 
+    @property
+    def author_full_name(self):
+        return f'{self.author.first_name} {self.author.last_name}' 
+
     class Meta:
         indexes = [models.Index(fields=['slug'])]
         ordering = ['-published_on']
