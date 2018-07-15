@@ -1,8 +1,12 @@
 .spinner {
-    margin: 100px auto;
     width: 40px;
     height: 40px;
-    position: relative;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
 }
 
 .cube1,
