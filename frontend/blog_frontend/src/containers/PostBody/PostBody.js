@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import AxiosInstance from "../../AxiosInstance";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import cssClass from "./PostBody.css";
+import HR from "../../components/UI/HR/HR";
 
 class PostBody extends Component {
     state = {
@@ -22,12 +23,15 @@ class PostBody extends Component {
         let postBody = <Spinner />;
         if (!this.state.loading && this.state.postBody) {
             postBody = (
-                <div className={cssClass.PostBody} >
-                    <h1>{this.state.postBody.title}</h1>
-                    <p>{this.state.postBody.body}</p>
-                    <p>{this.state.postBody.author_full_name}</p>
-                    <p>{new Date(this.state.postBody.published_on).toDateString()}</p>
-                </div>
+                <div className={cssClass.PostBodyDiv} >
+                    <h1 className={cssClass.Title} >{this.state.postBody.title}</h1>
+                    <p className={cssClass.PublishedDate} >{new Date(this.state.postBody.published_on).toDateString()}</p>
+                    <HR />
+                    <p className={cssClass.PostBody} >{this.state.postBody.body}</p>
+                    <HR />
+                    <div className={cssClass.PostInfo}>
+                    <p> - {this.state.postBody.author_full_name}</p>
+                </div></div>
             );
         }
 

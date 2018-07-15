@@ -1,5 +1,29 @@
-.PostBody {
+.PostBodyDiv {
+    width: 70%;
+    margin: 0 auto;
     padding-top: 90px;
     padding-left: 40px;
     padding-right: 40px;
+}
+
+.Title {
+    font-family: 'Cardo', serif;
+    font-weight: 100;
+    color: rgb(32, 32, 32);
+}
+
+.PostBody {
+    font-size: 1.5em;
+    color: rgb(32, 32, 32);
+    font-family: 'PT Sans', sans-serif;
+}
+
+.PostInfo {
+    font-size: 1.4em;
+    color: rgb(39, 39, 39);
+}
+
+.PublishedDate {
+    margin-top: -15px;
+    color: rgb(158, 158, 158);
 }
