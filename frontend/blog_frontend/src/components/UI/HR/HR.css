@@ -1,6 +1,5 @@
 .HR {
     border: 0;
-    height: 55px;
-    background-image: url(image/type_10.png);
-    background-repeat: no-repeat;
-    }
+    height: 1px;
+    background-image: linear-gradient(left, #f0f0f0, #8c8c8c, #f0f0f0);
+}
