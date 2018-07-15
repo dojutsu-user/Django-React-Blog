@@ -14,6 +14,7 @@ class Post(models.Model):
 
     title = models.CharField(max_length=100)
     body = models.TextField()
+    short_description = models.TextField(max_length=100)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='posts', related_query_name='post')
     slug = models.SlugField(blank=True, null=True)
@@ -35,6 +36,7 @@ class Post(models.Model):
 
     class Meta:
         indexes = [models.Index(fields=['slug'])]
+        ordering = ['-published_on']
 
 
 @receiver(post_save, sender=Post)
