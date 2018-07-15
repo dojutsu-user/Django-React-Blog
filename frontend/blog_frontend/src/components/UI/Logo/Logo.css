@@ -5,6 +5,7 @@
     padding-left: 20px;
     padding-top: 10px;
     padding-right: 5px;
+    cursor: pointer;
 }
 
 @media (max-width: 390px) {
