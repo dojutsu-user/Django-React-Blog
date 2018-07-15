@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import AxiosInstance from "../../AxiosInstance";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import Posts from "../../components/Posts/Posts";
+import cssClass from "./PostList.css";
 
 class PostList extends Component {
     state = {
@@ -24,7 +25,7 @@ class PostList extends Component {
             postList = <Posts postList={this.state.posts} />;
         }
 
-        return postList;
+        return <div className={cssClass.PostList}>{postList}</div>;
     }
 }
 

@@ -1,10 +1,19 @@
-// import React from "react";
+import React from "react";
 
-// const posts = props => {
+import Post from "./Post/Post";
 
-    
+const posts = props => {
+    console.log(props.postList);
+    const postList = props.postList.map(post => (
+        <Post
+            key={post.id}
+            title={post.title}
+            datePublished={post.published_on}
+            totalComments={post.total_comments}
+            author={post.author}
+        />
+    ));
+    return <div>{postList}</div>;
+};
 
-//     return (
-
-//     )
-// }
+export default posts;

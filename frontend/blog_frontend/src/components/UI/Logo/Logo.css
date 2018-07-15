@@ -14,3 +14,11 @@
         padding-top: 15px;
     }
 }
+
+@media (max-width: 340px) {
+    .Logo {
+        font-size: 23px;
+        padding-top: 20px;
+        padding-right: 10px;
+    }
+}

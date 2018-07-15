@@ -30,3 +30,11 @@
         padding-right: 8px;
     }  
 }
+
+@media (max-width: 340px) {
+    .HamburgerIcon {
+        width: 30px;
+        padding-top: 11px;
+        padding-right: 8px;
+    }  
+}

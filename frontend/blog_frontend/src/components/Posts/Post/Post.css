@@ -1,0 +1,127 @@
+.ba {
+    border-style: solid;
+    border-width: 1px;
+}
+
+.bt {
+    border-top-style: solid;
+    border-top-width: 1px;
+}
+
+.bBlack10 {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.br3 {
+    border-radius: 0.5rem;
+}
+
+.brTop {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.lhCopy {
+    line-height: 1.5;
+}
+
+.mw5 {
+    max-width: 16rem;
+}
+
+.black60 {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.bgNearWhite {
+    padding: 30px;
+}
+
+.pa3 {
+    padding: 1rem;
+}
+
+.pv2 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.ph3 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.mv0 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.mv4 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.f4 {
+    font-size: 1.25rem;
+}
+
+.f6 {
+    font-size: 0.875rem;
+}
+
+.measure {
+    max-width: 58em;
+}
+
+.center {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media screen and (min-width: 30em) {
+    .mw6Ns {
+        max-width: 60rem;
+    }
+
+    .f5Ns {
+        font-size: 1rem;
+    }
+}
+
+.ReadFullPost {
+    outline: none;
+    float: right;
+    border: 2px solid rgb(85, 207, 255);
+    margin-top: 20px;
+    padding: 9px;
+    background-color: white;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.ReadFullPost:hover {
+    box-shadow: 0 3px 4px #ccc;
+    background-color: rgb(85, 207, 255);
+    color: white;
+    transition: all 0.3s ease-in;
+}
+
+.PostInfo {
+    padding-top: 10px;
+    color: rgb(99, 99, 99);
+    line-height: 23px
+}
+
+.title {
+    font-family: "PT Sans", sans-serif;
+    font-weight: 200;
+    font-size: 30px;
+    color: rgb(36, 36, 36);
+}
+
+.title:hover {
+    color: rgb(0, 183, 255);
+    cursor: pointer;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}
