@@ -2,4 +2,30 @@
     width: 100%;
     height: 68px;
     box-shadow: 0 3px 2px #ccc;
+    background-color: white;
+}
+
+.HamburgerIcon {
+    float: right;
+    display: none;
+    width: 45px;
+    padding-top: 6px;
+    padding-right: 15px;
+}
+
+@media (max-width: 750px) {
+    .NavigationItems {
+        display: none;
+    }
+    .HamburgerIcon {
+        display: block;
+    }
+}
+
+@media (max-width: 390px) {
+    .HamburgerIcon {
+        width: 35px;
+        padding-top: 8px;
+        padding-right: 8px;
+    }  
 }

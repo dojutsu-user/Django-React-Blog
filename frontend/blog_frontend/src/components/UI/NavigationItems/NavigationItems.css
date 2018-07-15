@@ -1,4 +1,8 @@
 .UnorderList {
-    padding-right: 30px;
-    margin: 0;
+    display: flex;
+    flex-flow: column;
+}
+
+.NavigationItems {
+    float: right;
 }

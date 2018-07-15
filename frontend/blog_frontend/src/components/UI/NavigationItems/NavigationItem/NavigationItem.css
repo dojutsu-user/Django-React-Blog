@@ -1,10 +1,9 @@
 .Item {
-    display: block;
+    display: inline-block;
+    box-sizing: border-box;
     font-family: 'PT Sans', sans-serif;
-    list-style-type: none;
     padding-right: 46px;
-    padding-top: 24px;
-    float: right;
+    padding-top: 10px;
     font-size: 20px;
     text-decoration: none;
     color: black;

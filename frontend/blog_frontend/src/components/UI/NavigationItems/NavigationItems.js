@@ -2,19 +2,18 @@ import React from "react";
 
 import NavigationItem from "./NavigationItem/NavigationItem";
 import cssClass from "./NavigationItems.css";
-import Logo from "../Logo/Logo";
-import Aux from "../../../hoc/Aux/Aux"
 
 const navigationItems = props => {
     return (
-        <Aux>
-            <Logo />
-        <ul className={cssClass.UnorderList}>
-            <NavigationItem>Portfolio</NavigationItem>
-            <NavigationItem>About Author</NavigationItem>
-            <NavigationItem active={true}>Home</NavigationItem>
-        </ul>
-        </Aux>
+        <div className={cssClass.NavigationItems}>
+            <ul className={cssClass.UnorderList}>
+                <span className={cssClass.NavigationItems}>
+                    <NavigationItem active>Home</NavigationItem>
+                    <NavigationItem>About Author</NavigationItem>
+                    <NavigationItem>Portfolio</NavigationItem>
+                </span>
+            </ul>
+        </div>
     );
 };
 
