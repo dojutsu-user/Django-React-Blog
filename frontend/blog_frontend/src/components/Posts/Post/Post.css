@@ -113,6 +113,7 @@
 }
 
 .title {
+    text-decoration: none!important;
     font-family: "PT Sans", sans-serif;
     font-weight: 200;
     font-size: 30px;
@@ -122,6 +123,6 @@
 .title:hover {
     color: rgb(0, 183, 255);
     cursor: pointer;
-    text-decoration: underline;
-    transition: all 0.3s ease;
+    text-decoration: underline!important;
+    transition: all 0.1s ease;
 }

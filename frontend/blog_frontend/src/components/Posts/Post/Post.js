@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import cssClass from "./Post.css";
 
@@ -37,24 +38,31 @@ const post = props => {
 
     return (
         <article className={articleClass.join(" ")}>
-            <h1 className={h1Class.join(" ")}>{props.title}</h1>
+            <Link
+                style={{ textDecoration: 'none' }}
+                to={"posts/view/" + props.slug}
+            >
+                <h1 className={h1Class.join(" ")}>{props.title}</h1>
+            </Link>
             <div className={articleDivClass.join(" ")}>
                 <p className={articlePClass.join(" ")}>
                     {props.short_description}
-                    </p>
+                </p>
+                <Link to={"posts/view/" + props.slug}>
                     <button className={cssClass.ReadFullPost}>
                         Read Full Post
                     </button>
+                </Link>
+                <br />
+                <div className={cssClass.PostInfo}>
+                    Author: {props.author}
                     <br />
-                    <div className={cssClass.PostInfo}>
-                        Author: {props.author}
-                        <br />
-                        Published On:{" "}
-                        {new Date("2018-07-14T13:41:49+05:30").toDateString()}
-                        <br />
-                        {props.totalComments}{" "}
-                        {props.totalComments == 1 ? "Comment" : "Comments"}
-                    </div>
+                    Published On:{" "}
+                    {new Date("2018-07-14T13:41:49+05:30").toDateString()}
+                    <br />
+                    {props.totalComments}{" "}
+                    {props.totalComments == 1 ? "Comment" : "Comments"}
+                </div>
             </div>
         </article>
     );

@@ -6,6 +6,7 @@ const posts = props => {
     const postList = props.postList.map(post => (
         <Post
             key={post.slug}
+            slug={post.slug}
             title={post.title}
             datePublished={post.published_on}
             totalComments={post.total_comments}
