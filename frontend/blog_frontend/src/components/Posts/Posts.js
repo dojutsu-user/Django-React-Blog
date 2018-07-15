@@ -10,7 +10,7 @@ const posts = props => {
             title={post.title}
             datePublished={post.published_on}
             totalComments={post.total_comments}
-            author={post.author}
+            author={post.author_full_name}
             short_description={post.short_description}
         />
     ));
