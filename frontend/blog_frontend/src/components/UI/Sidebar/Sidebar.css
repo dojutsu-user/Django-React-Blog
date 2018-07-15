@@ -1,0 +1,21 @@
+.Sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    padding-top: 20px;
+    box-shadow: 0 2px 4px #ccc;
+    transition: all 0.3s ease-out;
+}
+
+.Open {
+    transform: translateX(0);
+}
+
+.Close {
+    transform: translateX(-110%)
+}

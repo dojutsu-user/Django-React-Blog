@@ -11,6 +11,7 @@
     width: 45px;
     padding-top: 6px;
     padding-right: 15px;
+    cursor: pointer;
 }
 
 @media (max-width: 750px) {

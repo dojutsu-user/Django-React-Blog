@@ -11,11 +11,18 @@ class Layout extends Component {
         isSidebarOpen: false
     };
 
+    SidebarToggleHandler = () =>
+        this.setState(prevState => {
+            return {
+                isSidebarOpen: !prevState.isSidebarOpen
+            };
+        });
+
     render() {
         return (
             <Aux>
                 <Logo />
-                <Toobar />
+                <Toobar clicked={this.SidebarToggleHandler} />
                 <Sidebar isSidebarOpen={this.state.isSidebarOpen} />
                 <main>{this.props.children}</main>
             </Aux>

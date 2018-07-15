@@ -12,7 +12,7 @@ const toolbar = props => {
                 <div className={cssClass.NavigationItems}>
                     <NavigationItems />
                 </div>
-                <div className={cssClass.HamburgerIcon}>
+                <div className={cssClass.HamburgerIcon} onClick={props.clicked}>
                     <img
                         className={cssClass.HamburgerIcon}
                         src={HamburgerIcon}
