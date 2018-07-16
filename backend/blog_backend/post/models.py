@@ -36,7 +36,10 @@ class Post(models.Model):
 
     @property
     def author_full_name(self):
-        return f'{self.author.first_name} {self.author.last_name}' 
+        try:
+            return f'{self.author.first_name} {self.author.last_name}'
+        except:
+            return "Name Not Set"
 
     class Meta:
         indexes = [models.Index(fields=['slug'])]
