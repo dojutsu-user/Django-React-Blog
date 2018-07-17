@@ -9,10 +9,8 @@
     width: 100%;
     height: 100%;
     z-index: 500;
-    transition: all 0.1s ease-in;
 }
 
 .Close {
     transform: translateX(-100%);
-    transition: all 0.1s ease-in-out;
 }

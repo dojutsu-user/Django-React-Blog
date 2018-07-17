@@ -5,7 +5,7 @@ import cssClass from "./Backdrop.css";
 const backdrop = props => {
 
     let classes = [cssClass.Backdrop];
-    if (!props.isSidebarOpen) {
+    if (!props.isOpen) {
         classes.push(cssClass.Close);
     }
 
