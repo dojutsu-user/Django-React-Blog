@@ -10,7 +10,7 @@ class UserProfile(models.Model):
     """Model For Extending Default Django User Model"""
 
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name='user')
+        User, on_delete=models.CASCADE, related_name='profile')
     website = models.URLField(null=True, blank=True)
     bio = models.TextField(null=True, blank=True, max_length=100)
     country = models.CharField(max_length=20, null=True, blank=True)

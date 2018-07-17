@@ -4,7 +4,7 @@ from rest_framework import generics
 from rest_framework.permissions import IsAdminUser
 
 from user_profile.models import UserProfile
-from .serializers import AdminUserProfileSerializer, AdminUserListSerializer
+from .serializers import AdminUserDetailSerializer, AdminUserListSerializer
 
 User = get_user_model()
 
@@ -16,6 +16,6 @@ class AdminUserListView(generics.ListCreateAPIView):
 
 
 class AdminUserDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = UserProfile.objects.all()
-    serializer_class = AdminUserProfileSerializer
+    queryset = User.objects.all()
+    serializer_class = AdminUserDetailSerializer
     permission_classes = [IsAdminUser,]
