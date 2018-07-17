@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import Input from "../../components/UI/Input/Input";
 import cssClass from "./Login.css";
-import AxionsInstance from "../../AxiosInstance";
 import * as actions from "../../store/actions/index";
 import Spinner from "../../components/UI/Spinner/Spinner";
 
@@ -75,10 +75,15 @@ class Login extends Component {
             </form>
         );
 
-        return this.props.loading ? (
-            <Spinner />
-        ) : (
-            <div className={cssClass.Container}>{form}</div>
+        return (
+            <div>
+                {this.props.isAuth ? <Redirect to={this.props.loginRedirectURL} /> : null}
+                {this.props.loading ? (
+                    <Spinner />
+                ) : (
+                    <div className={cssClass.Container}>{form}</div>
+                )}
+            </div>
         );
     }
 }
@@ -86,7 +91,8 @@ class Login extends Component {
 const mapStateToProps = state => {
     return {
         loading: state.loading,
-        token: state.token
+        isAuth: state.token !== null,
+        loginRedirectURL: state.loginRedirectURL
     };
 };
 
