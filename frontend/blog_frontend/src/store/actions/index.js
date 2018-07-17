@@ -1,1 +1,1 @@
-export { authLoginInit } from "./auth";
+export { authLogin } from "./auth";

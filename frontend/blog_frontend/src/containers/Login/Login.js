@@ -5,6 +5,7 @@ import Input from "../../components/UI/Input/Input";
 import cssClass from "./Login.css";
 import AxionsInstance from "../../AxiosInstance";
 import * as actions from "../../store/actions/index";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 class Login extends Component {
     state = {
@@ -34,12 +35,7 @@ class Login extends Component {
             username: this.state.loginForm.username.value,
             password: this.state.loginForm.password.value
         };
-        AxionsInstance.post("/auth/login/", loginCredentials)
-            .then(response => {
-                console.log(this.props.onAuthInit);
-                this.props.onAuthInit();
-            })
-            .catch(error => console.log(error));
+        this.props.onAuthLogin(loginCredentials);
     };
 
     inputChangedHandler(event, inputIdentifier) {
@@ -79,7 +75,11 @@ class Login extends Component {
             </form>
         );
 
-        return <div className={cssClass.Container}>{form}</div>;
+        return this.props.loading ? (
+            <Spinner />
+        ) : (
+            <div className={cssClass.Container}>{form}</div>
+        );
     }
 }
 
@@ -87,16 +87,17 @@ const mapStateToProps = state => {
     return {
         loading: state.loading,
         token: state.token
-    }
-}
+    };
+};
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuthInit: () => dispatch(actions.authLoginInit())
+        onAuthLogin: loginCredentials =>
+            dispatch(actions.authLogin(loginCredentials))
     };
 };
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(Login);
