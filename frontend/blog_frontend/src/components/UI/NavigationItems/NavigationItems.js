@@ -12,8 +12,24 @@ const navigationItems = props => {
                     <Link style={{ textDecoration: "none" }} to="/">
                         <NavigationItem active>Home</NavigationItem>
                     </Link>
-                    <Link style={{ textDecoration: "none" }} to="/about-author/"><NavigationItem>About Author</NavigationItem></Link>
-                    <Link style={{ textDecoration: "none" }} to="/author-portfolio/"><NavigationItem>Portfolio</NavigationItem></Link>
+                    <Link
+                        style={{ textDecoration: "none" }}
+                        to="/about-author/"
+                    >
+                        <NavigationItem>About Author</NavigationItem>
+                    </Link>
+                    <Link
+                        style={{ textDecoration: "none" }}
+                        to="/author-portfolio/"
+                    >
+                        <NavigationItem>Portfolio</NavigationItem>
+                    </Link>
+                    <Link
+                        style={{ textDecoration: "none" }}
+                        to="/login/"
+                    >
+                        <NavigationItem>Login</NavigationItem>
+                    </Link>
                 </span>
             </ul>
         </div>

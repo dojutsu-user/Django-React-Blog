@@ -25,7 +25,7 @@ class Layout extends Component {
                 <Toobar clicked={this.SidebarToggleHandler} />
                 <Sidebar isSidebarOpen={this.state.isSidebarOpen} />
                 <Backdrop
-                    isSidebarOpen={this.state.isSidebarOpen}
+                    isOpen={this.state.isSidebarOpen}
                     clicked={this.SidebarToggleHandler}
                 />
                 <main>{this.props.children}</main>
