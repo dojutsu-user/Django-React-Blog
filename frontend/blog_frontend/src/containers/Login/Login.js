@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import Input from "../../components/UI/Input/Input";
 import cssClass from "./Login.css";
 import AxionsInstance from "../../AxiosInstance";
+import * as actions from "../../store/actions/index";
 
 class Login extends Component {
     state = {
@@ -33,7 +35,10 @@ class Login extends Component {
             password: this.state.loginForm.password.value
         };
         AxionsInstance.post("/auth/login/", loginCredentials)
-            .then(response => console.log(response.data))
+            .then(response => {
+                console.log(this.props.onAuthInit);
+                this.props.onAuthInit();
+            })
             .catch(error => console.log(error));
     };
 
@@ -78,4 +83,20 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapStateToProps = state => {
+    return {
+        loading: state.loading,
+        token: state.token
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuthInit: () => dispatch(actions.authLoginInit())
+    };
+};
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(Login);
