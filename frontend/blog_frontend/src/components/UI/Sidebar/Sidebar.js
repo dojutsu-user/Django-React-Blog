@@ -15,9 +15,9 @@ const sidebar = props => {
 
     return (
         <Aux>
-            <div className={classes.join(' ')}>
+            <div className={classes.join(" ")}>
                 <Logo />
-                <NavigationItems />
+                <NavigationItems isAuth={props.isAuth} />
             </div>
         </Aux>
     );

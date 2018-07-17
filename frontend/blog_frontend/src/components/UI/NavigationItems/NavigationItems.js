@@ -24,12 +24,18 @@ const navigationItems = props => {
                     >
                         <NavigationItem>Portfolio</NavigationItem>
                     </Link>
-                    <Link
-                        style={{ textDecoration: "none" }}
-                        to="/login/"
-                    >
-                        <NavigationItem>Login</NavigationItem>
-                    </Link>
+                    {props.isAuth ? (
+                        <Link
+                            style={{ textDecoration: "none" }}
+                            to="/dashboard/"
+                        >
+                            <NavigationItem>Dashboard</NavigationItem>
+                        </Link>
+                    ) : (
+                        <Link style={{ textDecoration: "none" }} to="/login/">
+                            <NavigationItem>Login</NavigationItem>
+                        </Link>
+                    )}
                 </span>
             </ul>
         </div>

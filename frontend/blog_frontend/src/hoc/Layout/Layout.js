@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import Aux from "../Aux/Aux";
 import Toobar from "../../components/UI/Toolbar/Toolbar";
@@ -22,8 +23,14 @@ class Layout extends Component {
         return (
             <Aux>
                 <Logo />
-                <Toobar clicked={this.SidebarToggleHandler} />
-                <Sidebar isSidebarOpen={this.state.isSidebarOpen} />
+                <Toobar
+                    clicked={this.SidebarToggleHandler}
+                    isAuth={this.props.isAuth}
+                />
+                <Sidebar
+                    isSidebarOpen={this.state.isSidebarOpen}
+                    isAuth={this.props.isAuth}
+                />
                 <Backdrop
                     isOpen={this.state.isSidebarOpen}
                     clicked={this.SidebarToggleHandler}
@@ -34,4 +41,10 @@ class Layout extends Component {
     }
 }
 
-export default Layout;
+const mapStateToProps = state => {
+    return {
+        isAuth: state.token !== null
+    };
+};
+
+export default connect(mapStateToProps)(Layout);

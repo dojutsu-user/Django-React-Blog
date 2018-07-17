@@ -10,7 +10,7 @@ const toolbar = props => {
         <Aux>
             <div className={cssClass.Toolbar}>
                 <div className={cssClass.NavigationItems}>
-                    <NavigationItems />
+                    <NavigationItems isAuth={props.isAuth}/>
                 </div>
                 <div className={cssClass.HamburgerIcon} onClick={props.clicked}>
                     <img

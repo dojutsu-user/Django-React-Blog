@@ -18,7 +18,7 @@
     cursor: pointer;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 830px) {
     .NavigationItems {
         display: none;
     }
