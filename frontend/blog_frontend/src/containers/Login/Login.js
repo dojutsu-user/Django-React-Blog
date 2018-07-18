@@ -6,6 +6,8 @@ import Input from "../../components/UI/Input/Input";
 import cssClass from "./Login.css";
 import * as actions from "../../store/actions/index";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import Aux from "../../hoc/Aux/Aux";
+import Button from "../../components/UI/Button/Button";
 
 class Login extends Component {
     state = {
@@ -59,25 +61,37 @@ class Login extends Component {
         }
 
         let form = (
-            <form onSubmit={this.loginHandler}>
-                {formElements.map(formElement => (
-                    <Input
-                        key={formElement.id}
-                        elementType={formElement.config.elementType}
-                        elementConfig={formElement.config.elementConfig}
-                        value={formElement.config.value}
-                        changed={event =>
-                            this.inputChangedHandler(event, formElement.id)
-                        }
-                    />
-                ))}
-                <button>Login</button>
-            </form>
+            <Aux>
+                <h1
+                    style={{
+                        fontFamily: "Roboto, sans-serif",
+                        fontWeight: "200"
+                    }}
+                >
+                    Login
+                </h1>
+                <form onSubmit={this.loginHandler}>
+                    {formElements.map(formElement => (
+                        <Input
+                            key={formElement.id}
+                            elementType={formElement.config.elementType}
+                            elementConfig={formElement.config.elementConfig}
+                            value={formElement.config.value}
+                            changed={event =>
+                                this.inputChangedHandler(event, formElement.id)
+                            }
+                        />
+                    ))}
+                    <Button>Login</Button>
+                </form>
+            </Aux>
         );
 
         return (
             <div>
-                {this.props.isAuth ? <Redirect to={this.props.loginRedirectURL} /> : null}
+                {this.props.isAuth ? (
+                    <Redirect to={this.props.loginRedirectURL} />
+                ) : null}
                 {this.props.loading ? (
                     <Spinner />
                 ) : (

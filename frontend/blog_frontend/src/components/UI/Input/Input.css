@@ -1,0 +1,12 @@
+.TextField {
+    display: block;
+    margin-bottom: 20px;
+    height: 30px;
+    width: 200px;
+    padding-left: 10px;
+}
+
+.TextField:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
