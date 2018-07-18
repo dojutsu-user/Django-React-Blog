@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Button from "../../UI/Button/Button";
 import cssClass from "./Post.css";
 
 const post = props => {
@@ -39,7 +40,7 @@ const post = props => {
     return (
         <article className={articleClass.join(" ")}>
             <Link
-                style={{ textDecoration: 'none' }}
+                style={{ textDecoration: "none" }}
                 to={"posts/view/" + props.slug}
             >
                 <h1 className={h1Class.join(" ")}>{props.title}</h1>
@@ -49,9 +50,9 @@ const post = props => {
                     {props.short_description}
                 </p>
                 <Link to={"posts/view/" + props.slug}>
-                    <button className={cssClass.ReadFullPost}>
-                        Read Full Post
-                    </button>
+                    <div className={cssClass.ReadFullPost}>
+                        <Button>Read Full Post</Button>
+                    </div>
                 </Link>
                 <br />
                 <div className={cssClass.PostInfo}>

@@ -88,32 +88,14 @@
     }
 }
 
-.ReadFullPost {
-    outline: none;
-    float: right;
-    border: 2px solid rgb(85, 207, 255);
-    margin-top: 20px;
-    padding: 9px;
-    background-color: white;
-    cursor: pointer;
-    margin-right: 15px;
-}
-
-.ReadFullPost:hover {
-    box-shadow: 0 3px 4px #ccc;
-    background-color: rgb(85, 207, 255);
-    color: white;
-    transition: all 0.3s ease-in;
-}
-
 .PostInfo {
     padding-top: 10px;
     color: rgb(99, 99, 99);
-    line-height: 23px
+    line-height: 23px;
 }
 
 .title {
-    text-decoration: none!important;
+    text-decoration: none !important;
     font-family: "PT Sans", sans-serif;
     font-weight: 200;
     font-size: 30px;
@@ -123,6 +105,11 @@
 .title:hover {
     color: rgb(0, 183, 255);
     cursor: pointer;
-    text-decoration: underline!important;
+    text-decoration: underline !important;
     transition: all 0.1s ease;
+}
+
+.ReadFullPost {
+    margin-top: 20px;
+    float: right;
 }
