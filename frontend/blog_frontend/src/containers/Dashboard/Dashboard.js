@@ -4,14 +4,21 @@ import { connect } from "react-redux";
 import cssClass from "./Dashboard.css";
 import { Redirect } from "react-router-dom";
 import Aux from "../../hoc/Aux/Aux";
+import * as actions from "../../store/actions/index";
 
 class Dashboard extends Component {
+    onLogoutClickHandler = () => {
+        this.props.onClickLogout();
+        this.props.history.go("/");
+    }
+
     render() {
         return (
             <Aux>
+                {!this.props.isAuth ? <Redirect to="/" /> : null}
                 <div className={cssClass.OuterWrapper}>
                     {" "}
-                    <div class={cssClass.InnerWrapper}>
+                    <div className={cssClass.InnerWrapper}>
                         <div className={cssClass.Container}>
                             View Your Profile
                         </div>
@@ -25,6 +32,12 @@ class Dashboard extends Component {
                     </div>
                     <div className={cssClass.InnerWrapper}>
                         <div className={cssClass.Container}>Admin Panel</div>
+                        <div
+                            className={cssClass.Container}
+                            onClick={this.onLogoutClickHandler}
+                        >
+                            Logout
+                        </div>
                     </div>
                 </div>
             </Aux>
@@ -38,4 +51,13 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = dispatch => {
+    return {
+        onClickLogout: () => dispatch(actions.logout())
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Dashboard);

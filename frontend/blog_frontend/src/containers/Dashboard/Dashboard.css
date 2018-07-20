@@ -4,8 +4,8 @@
 
 .OuterWrapper {
     width: 40%;
-    padding-bottom: 25px;
     margin: 100px auto;
+    padding-bottom: 25px;
     border: 1px solid rgb(204, 204, 204);
     box-shadow: 0 3px 2px #ccc;
 }
@@ -24,8 +24,28 @@
     font-family: "PT Sans", sans-serif;
     width: 200px;
     height: 50px;
-    margin: 0 10px;
+    margin: 6px 10px;
     background: #e0e0e0;
     display: inline-block;
     font-size: medium;
+}
+
+@media (max-width: 610px) {
+    .Container {
+        width:150px;
+    }
+}
+
+@media (max-width: 475px) {
+    .Container {
+        width:100px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 295px) {
+    .Container {
+        width:75px;
+        font-size: 10px;
+    }
 }

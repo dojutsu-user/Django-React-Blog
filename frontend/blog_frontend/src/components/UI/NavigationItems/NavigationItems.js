@@ -27,7 +27,7 @@ const navigationItems = props => {
                     {props.isAuth ? (
                         <Link
                             style={{ textDecoration: "none" }}
-                            to="/dashboard/"
+                            to="/dashboard"
                         >
                             <NavigationItem>Dashboard</NavigationItem>
                         </Link>
