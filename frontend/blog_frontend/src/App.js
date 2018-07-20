@@ -6,6 +6,7 @@ import Layout from "./hoc/Layout/Layout";
 import PostList from "./containers/PostList/PostList";
 import PostBody from "./containers/PostBody/PostBody";
 import Login from "./containers/Login/Login";
+import Dashboard from "./containers/Dashboard/Dashboard";
 
 class App extends Component {
     render() {
@@ -13,6 +14,7 @@ class App extends Component {
             <div className={cssClass.App}>
                 <Layout>
                     <Switch>
+                        <Route path="/dashboard" component={Dashboard} />
                         <Route path="/login" component={Login} />
                         <Route path="/posts/view/:slug/" component={PostBody} />
                         <Route path="/" component={PostList} />
