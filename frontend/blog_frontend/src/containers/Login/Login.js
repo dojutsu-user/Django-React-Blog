@@ -24,7 +24,7 @@ class Login extends Component {
                 elementType: "input",
                 elementConfig: {
                     type: "password",
-                    placeholder: "password"
+                    placeholder: "Password"
                 },
                 value: ""
             }
@@ -88,16 +88,21 @@ class Login extends Component {
         );
 
         return (
-            <div>
+            <Aux>
                 {this.props.isAuth ? (
                     <Redirect to={this.props.loginRedirectURL} />
                 ) : null}
-                {this.props.loading ? (
-                    <Spinner />
-                ) : (
-                    <div className={cssClass.Container}>{form}</div>
-                )}
-            </div>
+                <div>
+                    {this.props.isAuth ? (
+                        <Redirect to={this.props.loginRedirectURL} />
+                    ) : null}
+                    {this.props.loading ? (
+                        <Spinner />
+                    ) : (
+                        <div className={cssClass.Container}>{form}</div>
+                    )}
+                </div>
+            </Aux>
         );
     }
 }
