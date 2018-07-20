@@ -3,6 +3,7 @@ import { updateObject } from "../utility";
 
 const initialState = {
     token: null,
+    username: null,
     loading: false,
     loginRedirectURL: "/"
 };
@@ -12,7 +13,15 @@ const authInit = (state, action) => {
 };
 
 const authLoginSuccess = (state, action) => {
-    return updateObject(state, { loading: false, token: action.token });
+    return updateObject(state, {
+        loading: false,
+        token: action.token,
+        username: action.username
+    });
+};
+
+const authLogout = (state, action) => {
+    return updateObject(state, { token: null, username: null });
 };
 
 const reducer = (state = initialState, action) => {
@@ -21,6 +30,8 @@ const reducer = (state = initialState, action) => {
             return authInit(state, action);
         case actionTypes.AUTH_LOGIN_SUCCESS:
             return authLoginSuccess(state, action);
+        case actionTypes.AUTH_LOGOUT:
+            return updateObject(state, action);
         default:
             return state;
     }
