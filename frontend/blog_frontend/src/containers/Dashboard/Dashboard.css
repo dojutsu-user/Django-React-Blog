@@ -1,3 +1,31 @@
 .Dashboard {
     padding: 60px;
 }
+
+.OuterWrapper {
+    width: 40%;
+    padding-bottom: 25px;
+    margin: 100px auto;
+    border: 1px solid rgb(204, 204, 204);
+    box-shadow: 0 3px 2px #ccc;
+}
+
+.InnerWrapper {
+    margin-top: 30px;
+    font-size: 0;
+    text-align: center;
+}
+
+.Container {
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-family: "PT Sans", sans-serif;
+    width: 200px;
+    height: 50px;
+    margin: 0 10px;
+    background: #e0e0e0;
+    display: inline-block;
+    font-size: medium;
+}
