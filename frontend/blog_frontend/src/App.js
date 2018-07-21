@@ -15,22 +15,48 @@ class App extends Component {
     componentDidMount() {
         this.props.onCheckAuthStatus();
     }
+
     render() {
+        const routesForLoggedInUsers = (
+            <Switch>
+                <Route path="/dashboard" component={Dashboard} />
+                <Route path="/posts/view/:slug/" component={PostBody} />
+                <Route path="/" component={PostList} />
+            </Switch>
+        );
+
+        const routesForAnonymousUsers = (
+            <Switch>
+                <Route path="/login" component={Login} />
+                <Route path="/posts/view/:slug/" component={PostBody} />
+                <Route path="/" component={PostList} />
+            </Switch>
+        );
         return (
             <div className={cssClass.App}>
                 <Layout>
-                    <Switch>
+                    {this.props.isAuth
+                        ? routesForLoggedInUsers
+                        : routesForAnonymousUsers}
+
+                    {/* <Switch>
                         <Route path="/admin-panel" component={AdminPanel} />
                         <Route path="/dashboard" component={Dashboard} />
                         <Route path="/login" component={Login} />
                         <Route path="/posts/view/:slug/" component={PostBody} />
                         <Route path="/" component={PostList} />
-                    </Switch>
+                    </Switch> */}
                 </Layout>
             </div>
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        isAuth: state.token !== null
+    };
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -40,7 +66,7 @@ const mapDispatchToProps = dispatch => {
 
 export default withRouter(
     connect(
-        null,
+        mapStateToProps,
         mapDispatchToProps
     )(App)
 );
