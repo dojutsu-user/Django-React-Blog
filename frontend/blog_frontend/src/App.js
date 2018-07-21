@@ -9,6 +9,7 @@ import PostBody from "./containers/PostBody/PostBody";
 import Login from "./containers/Login/Login";
 import Dashboard from "./containers/Dashboard/Dashboard";
 import * as actions from "./store/actions/index";
+import AdminPanel from "./components/AdminPanel/AdminPanel";
 
 class App extends Component {
     componentDidMount() {
@@ -19,6 +20,7 @@ class App extends Component {
             <div className={cssClass.App}>
                 <Layout>
                     <Switch>
+                        <Route path="/admin-panel" component={AdminPanel} />
                         <Route path="/dashboard" component={Dashboard} />
                         <Route path="/login" component={Login} />
                         <Route path="/posts/view/:slug/" component={PostBody} />

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import cssClass from "./Dashboard.css";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import Aux from "../../hoc/Aux/Aux";
 import * as actions from "../../store/actions/index";
 
@@ -10,7 +10,7 @@ class Dashboard extends Component {
     onLogoutClickHandler = () => {
         this.props.onClickLogout();
         this.props.history.go("/");
-    }
+    };
 
     render() {
         return (
@@ -31,7 +31,15 @@ class Dashboard extends Component {
                         <div className={cssClass.Container}>Your Posts</div>
                     </div>
                     <div className={cssClass.InnerWrapper}>
-                        <div className={cssClass.Container}>Admin Panel</div>
+                        <Link
+                            style={{ textDecoration: "none" }}
+                            to="/admin-panel"
+                        >
+                            {" "}
+                            <div className={cssClass.Container}>
+                                Admin Panel
+                            </div>
+                        </Link>
                         <div
                             className={cssClass.Container}
                             onClick={this.onLogoutClickHandler}

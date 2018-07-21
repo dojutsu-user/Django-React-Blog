@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import NavigationItem from "./NavigationItem/NavigationItem";
 import cssClass from "./NavigationItems.css";
@@ -9,32 +9,35 @@ const navigationItems = props => {
         <div className={cssClass.NavigationItems}>
             <ul className={cssClass.UnorderList}>
                 <span className={cssClass.NavigationItems}>
-                    <Link style={{ textDecoration: "none" }} to="/">
-                        <NavigationItem active>Home</NavigationItem>
-                    </Link>
-                    <Link
+                    <NavLink style={{ textDecoration: "none" }} to="/">
+                        <NavigationItem>Home</NavigationItem>
+                    </NavLink>
+                    <NavLink
                         style={{ textDecoration: "none" }}
                         to="/about-author/"
                     >
                         <NavigationItem>About Author</NavigationItem>
-                    </Link>
-                    <Link
+                    </NavLink>
+                    <NavLink
                         style={{ textDecoration: "none" }}
                         to="/author-portfolio/"
                     >
                         <NavigationItem>Portfolio</NavigationItem>
-                    </Link>
+                    </NavLink>
                     {props.isAuth ? (
-                        <Link
+                        <NavLink
                             style={{ textDecoration: "none" }}
                             to="/dashboard"
                         >
                             <NavigationItem>Dashboard</NavigationItem>
-                        </Link>
+                        </NavLink>
                     ) : (
-                        <Link style={{ textDecoration: "none" }} to="/login/">
+                        <NavLink
+                            style={{ textDecoration: "none" }}
+                            to="/login/"
+                        >
                             <NavigationItem>Login</NavigationItem>
-                        </Link>
+                        </NavLink>
                     )}
                 </span>
             </ul>
