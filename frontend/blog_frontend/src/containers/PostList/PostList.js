@@ -11,7 +11,7 @@ class PostList extends Component {
         loading: true
     };
 
-    componentDidMount() {
+    componentWillMount() {
         AxiosInstance.get("posts/")
             .then(response =>
                 this.setState({ posts: response.data, loading: false })

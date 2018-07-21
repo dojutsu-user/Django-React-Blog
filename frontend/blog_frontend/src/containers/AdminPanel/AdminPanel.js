@@ -30,4 +30,4 @@ class AdminPanel extends Component {
     }
 }
 
-export default adminPanel;
+export default AdminPanel;

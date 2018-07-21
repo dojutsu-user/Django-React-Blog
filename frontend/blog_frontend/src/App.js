@@ -9,7 +9,7 @@ import PostBody from "./containers/PostBody/PostBody";
 import Login from "./containers/Login/Login";
 import Dashboard from "./containers/Dashboard/Dashboard";
 import * as actions from "./store/actions/index";
-import AdminPanel from "./components/AdminPanel/AdminPanel";
+import AdminPanel from "./containers/AdminPanel/AdminPanel";
 
 class App extends Component {
     componentDidMount() {
@@ -19,6 +19,7 @@ class App extends Component {
     render() {
         const routesForLoggedInUsers = (
             <Switch>
+                <Route path="/admin-panel" component={AdminPanel} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/posts/view/:slug/" component={PostBody} />
                 <Route path="/" component={PostList} />
@@ -38,14 +39,6 @@ class App extends Component {
                     {this.props.isAuth
                         ? routesForLoggedInUsers
                         : routesForAnonymousUsers}
-
-                    {/* <Switch>
-                        <Route path="/admin-panel" component={AdminPanel} />
-                        <Route path="/dashboard" component={Dashboard} />
-                        <Route path="/login" component={Login} />
-                        <Route path="/posts/view/:slug/" component={PostBody} />
-                        <Route path="/" component={PostList} />
-                    </Switch> */}
                 </Layout>
             </div>
         );
