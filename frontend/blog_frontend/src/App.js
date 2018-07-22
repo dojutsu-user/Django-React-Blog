@@ -10,6 +10,7 @@ import Login from "./containers/Login/Login";
 import Dashboard from "./containers/Dashboard/Dashboard";
 import * as actions from "./store/actions/index";
 import AdminPanel from "./containers/AdminPanel/AdminPanel";
+import CreatePost from "./containers/CreatePost/CreatePost";
 
 class App extends Component {
     componentDidMount() {
@@ -19,6 +20,10 @@ class App extends Component {
     render() {
         const routesForLoggedInUsers = (
             <Switch>
+                <Route
+                    path="/dashboard/create-new-post"
+                    component={CreatePost}
+                />
                 <Route path="/admin-panel" component={AdminPanel} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/posts/view/:slug/" component={PostBody} />

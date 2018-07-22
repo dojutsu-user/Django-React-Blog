@@ -27,7 +27,11 @@ class Dashboard extends Component {
                         </div>
                     </div>
                     <div className={cssClass.InnerWrapper}>
-                        <div className={cssClass.Container}>Create A Post</div>
+                        <Link to="/dashboard/create-new-post">
+                            <div className={cssClass.Container}>
+                                Create New Post
+                            </div>
+                        </Link>
                         <div className={cssClass.Container}>Your Posts</div>
                     </div>
                     <div className={cssClass.InnerWrapper}>
