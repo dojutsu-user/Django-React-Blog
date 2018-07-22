@@ -23,7 +23,7 @@ const reducer = (state = initialState, action) => {
             return sendNewPostToServerInit(state, action);
         case actionTypes.SEND_NEW_POST_TO_SERVER_SUCCESS:
             return sendNewPostToServerSuccess(state, action);
-        case actionTypes.SEND_NEW_POST_TO_SERVER_SUCCESS:
+        case actionTypes.SEND_NEW_POST_TO_SERVER_FAIL:
             return sendNewPostToServerFail(state, action);
         default:
             return state;
