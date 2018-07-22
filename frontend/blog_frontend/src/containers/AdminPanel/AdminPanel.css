@@ -26,6 +26,11 @@
     font-size: medium;
 }
 
+.Container:hover {
+    background-color: rgb(236, 236, 236);
+    box-shadow: 0 2px 3px #ccc;
+}
+
 @media (max-width: 610px) {
     .Container {
         width: 150px;
