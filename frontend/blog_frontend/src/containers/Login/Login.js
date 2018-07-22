@@ -109,9 +109,9 @@ class Login extends Component {
 
 const mapStateToProps = state => {
     return {
-        loading: state.loading,
-        isAuth: state.token !== null,
-        loginRedirectURL: state.loginRedirectURL
+        loading: state.auth.loading,
+        isAuth: state.auth.token !== null,
+        loginRedirectURL: state.auth.loginRedirectURL
     };
 };
 

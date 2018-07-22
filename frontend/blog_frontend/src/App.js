@@ -52,7 +52,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return {
-        isAuth: state.token !== null
+        isAuth: state.auth.token !== null
     };
 };
 

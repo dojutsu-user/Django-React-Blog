@@ -3,7 +3,8 @@
     margin-bottom: 20px;
     height: 30px;
     width: 200px;
-    padding-left: 10px;
+    padding-left: 5px;
+    font-family: "PT Sans", sans-serif;
 }
 
 .TextField:focus {
@@ -15,4 +16,20 @@
 .Invalid {
     box-shadow: 0 0 5px rgb(255, 14, 14);
     border: 1px solid rgb(255, 14, 14);
+}
+
+.TextArea {
+    padding-left: 5px;
+    display: block;
+    width: 75%;
+    min-width: 249px;
+    font-family: "PT Sans", sans-serif;
+    height: 135px;
+    margin-bottom: 20px;
+}
+
+.TextArea:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
 }

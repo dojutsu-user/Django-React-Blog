@@ -1,13 +1,22 @@
 import React from "react";
 
-import cssClass from "./Input.css"
+import cssClass from "./Input.css";
 
 const input = props => {
     switch (props.elementType) {
-        default:
+        case "input":
             return (
                 <input
                     className={cssClass.TextField}
+                    {...props.elementConfig}
+                    value={props.value}
+                    onChange={props.changed}
+                />
+            );
+        case "textarea":
+            return (
+                <textarea
+                    className={cssClass.TextArea}
                     {...props.elementConfig}
                     value={props.value}
                     onChange={props.changed}
