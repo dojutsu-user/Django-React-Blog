@@ -16,6 +16,9 @@ class Dashboard extends Component {
         return (
             <Aux>
                 {!this.props.isAuth ? <Redirect to="/" /> : null}
+                <div className={cssClass.Title}>
+                    <p>Welcome {this.props.username}</p>
+                </div>
                 <div className={cssClass.OuterWrapper}>
                     {" "}
                     <div className={cssClass.InnerWrapper}>
@@ -61,7 +64,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => {
     return {
-        isAuth: state.auth.token !== null
+        isAuth: state.auth.token !== null,
+        username: state.auth.username
     };
 };
 

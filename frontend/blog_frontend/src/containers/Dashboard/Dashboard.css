@@ -4,7 +4,7 @@
 
 .OuterWrapper {
     width: 40%;
-    margin: 100px auto;
+    margin: 0 auto;
     padding-bottom: 25px;
     border: 1px solid rgb(204, 204, 204);
     box-shadow: 0 3px 2px #ccc;
@@ -38,20 +38,30 @@
 
 @media (max-width: 610px) {
     .Container {
-        width:150px;
+        width: 150px;
     }
 }
 
 @media (max-width: 475px) {
     .Container {
-        width:100px;
+        width: 100px;
         font-size: 12px;
     }
 }
 
 @media (max-width: 295px) {
     .Container {
-        width:75px;
+        width: 75px;
         font-size: 10px;
     }
+}
+
+.Title {
+    width: 15.7%;
+    padding: 0;
+    margin: 0 auto;
+    margin-top: 100px;
+    font-family: "PT Sans", sans-serif;
+    font-size: 25px;
+    padding-bottom: 0;
 }
