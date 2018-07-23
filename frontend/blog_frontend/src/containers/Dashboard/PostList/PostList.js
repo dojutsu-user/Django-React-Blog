@@ -28,7 +28,7 @@ class PostList extends Component {
     render() {
         let postsList = this.props.userPostsList
             ? this.props.userPostsList.map(post => (
-                  <tr>
+                  <tr key={post.slug}>
                       <td>{post.title}</td>
                       <td>{post.total_comments}</td>
                       <td>{new Date(post.created_on).toDateString()}</td>
