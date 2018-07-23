@@ -32,7 +32,9 @@ class Dashboard extends Component {
                                 Create New Post
                             </div>
                         </Link>
-                        <div className={cssClass.Container}>Your Posts</div>
+                        <Link to="/dashboard/post-list">
+                            <div className={cssClass.Container}>Your Posts</div>
+                        </Link>
                     </div>
                     <div className={cssClass.InnerWrapper}>
                         <Link

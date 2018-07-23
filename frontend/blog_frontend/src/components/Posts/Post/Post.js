@@ -59,7 +59,7 @@ const post = props => {
                     Author: {props.author}
                     <br />
                     Published On:{" "}
-                    {new Date("2018-07-14T13:41:49+05:30").toDateString()}
+                    {new Date(props.datePublished).toDateString()}
                     <br />
                     {props.totalComments}{" "}
                     {props.totalComments == 1 ? "Comment" : "Comments"}

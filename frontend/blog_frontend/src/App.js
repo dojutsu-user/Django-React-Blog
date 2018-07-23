@@ -11,6 +11,7 @@ import Dashboard from "./containers/Dashboard/Dashboard";
 import * as actions from "./store/actions/index";
 import AdminPanel from "./containers/AdminPanel/AdminPanel";
 import CreatePost from "./containers/CreatePost/CreatePost";
+import PostListDashboard from "./containers/Dashboard/PostList/PostList";
 
 class App extends Component {
     componentDidMount() {
@@ -20,6 +21,10 @@ class App extends Component {
     render() {
         const routesForLoggedInUsers = (
             <Switch>
+                <Route
+                    path="/dashboard/post-list"
+                    component={PostListDashboard}
+                />
                 <Route
                     path="/dashboard/create-new-post"
                     component={CreatePost}

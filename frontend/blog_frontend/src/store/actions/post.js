@@ -1,5 +1,6 @@
 import * as actionsTypes from "./actionTypes";
 import AxiosInstance from "../../AxiosInstance";
+import Axios from "axios";
 
 export const sendNewPostToServerInit = () => {
     return {
@@ -28,8 +29,43 @@ export const sendNewPostToServer = (postData, config) => {
                 dispatch(sendNewPostToServerSuccess());
             })
             .catch(error => {
-                alert(error);
+                // alert(error.);
+                console.log(error.response.data);
                 dispatch(sendNewPostToServerFail());
+            });
+    };
+};
+
+export const listPostsToUserDashboardInit = () => {
+    return {
+        type: actionsTypes.LIST_POSTS_TO_USER_DASHBOARD_INIT
+    };
+};
+
+export const listPostsToUserDashboardSuccess = userPosts => {
+    return {
+        type: actionsTypes.LIST_POSTS_TO_USER_DASHBOARD_SUCCESS,
+        userPosts: userPosts
+    };
+};
+
+export const listPostsToUserDashboardFail = error => {
+    return {
+        type: actionsTypes.LIST_POSTS_TO_USER_DASHBOARD_FAIL,
+        error: error
+    };
+};
+
+export const listPostsToUserDashboard = config => {
+    return dispatch => {
+        dispatch(listPostsToUserDashboardInit());
+        AxiosInstance.get("/dashboard/post-list", config)
+            .then(response => {
+                dispatch(listPostsToUserDashboardSuccess(response.data));
+            })
+            .catch(error => {
+                alert(error);
+                dispatch(listPostsToUserDashboardFail());
             });
     };
 };
