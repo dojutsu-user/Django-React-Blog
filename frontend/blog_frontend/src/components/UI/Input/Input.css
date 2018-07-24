@@ -13,7 +13,7 @@
     border: 1px solid rgba(81, 203, 238, 1);
 }
 
-.Invalid {
+.Invalid:focus {
     box-shadow: 0 0 5px rgb(255, 14, 14);
     border: 1px solid rgb(255, 14, 14);
 }

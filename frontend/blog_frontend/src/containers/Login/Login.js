@@ -18,7 +18,14 @@ class Login extends Component {
                     type: "input",
                     placeholder: "Username"
                 },
-                value: ""
+                value: "",
+                validation: {
+                    required: true,
+                    minLength: 5,
+                    maxLength: 20
+                },
+                valid: false,
+                touched: false
             },
             password: {
                 elementType: "input",
@@ -26,9 +33,16 @@ class Login extends Component {
                     type: "password",
                     placeholder: "Password"
                 },
-                value: ""
+                value: "",
+                validation: {
+                    required: true,
+                    minLength: 8
+                },
+                valid: false,
+                touched: false
             }
-        }
+        },
+        isLoginFormValid: false
     };
 
     loginHandler = event => {
@@ -40,15 +54,50 @@ class Login extends Component {
         this.props.onAuthLogin(loginCredentials);
     };
 
+    checkValidity(value, rules) {
+        let isValid = true;
+        if (!rules) {
+            return true;
+        }
+
+        if (rules.required) {
+            isValid = value.trim() !== "" && isValid;
+        }
+
+        if (rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid;
+        }
+
+        if (rules.maxLength) {
+            isValid = value.length <= rules.maxLength && isValid;
+        }
+
+        return isValid;
+    }
+
     inputChangedHandler(event, inputIdentifier) {
         const updatedLoginForm = {
-            ...this.state.loginForm,
-            [inputIdentifier]: {
-                ...this.state.loginForm[inputIdentifier],
-                value: event.target.value
-            }
+            ...this.state.loginForm
         };
-        this.setState({ loginForm: updatedLoginForm });
+        const updatedFormElement = {
+            ...updatedLoginForm[inputIdentifier]
+        };
+        updatedFormElement.value = event.target.value;
+        updatedFormElement.valid = this.checkValidity(
+            updatedFormElement.value,
+            updatedFormElement.validation
+        );
+        updatedFormElement.touched = true;
+        updatedLoginForm[inputIdentifier] = updatedFormElement;
+        let isFormValid = true;
+        for (let inputIdentifier in updatedLoginForm) {
+            isFormValid =
+                updatedLoginForm[inputIdentifier].valid && isFormValid;
+        }
+        this.setState({
+            loginForm: updatedLoginForm,
+            isLoginFormValid: isFormValid
+        });
     }
 
     render() {
@@ -80,9 +129,14 @@ class Login extends Component {
                             changed={event =>
                                 this.inputChangedHandler(event, formElement.id)
                             }
+                            invalid={!formElement.config.valid}
+                            shouldValidate={formElement.config.validation}
+                            touched={formElement.config.touched}
                         />
                     ))}
-                    <Button>Login</Button>
+                    <Button disabled={!this.state.isLoginFormValid}>
+                        Login
+                    </Button>
                 </form>
             </Aux>
         );
