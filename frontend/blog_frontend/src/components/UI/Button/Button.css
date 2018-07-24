@@ -6,6 +6,7 @@
     cursor: pointer;
     margin-right: 15px;
     min-width: 80px;
+    transition: all 0.1s ease-in-out;
 }
 
 .Button:hover {
@@ -13,4 +14,16 @@
     background-color: rgb(85, 207, 255);
     color: white;
     transition: all 0.1s ease-out;
+}
+
+.Button:disabled {
+    cursor: not-allowed;
+    background-color: rgb(211, 211, 211);
+    border: 2px solid rgb(211, 211, 211);
+    color: rgb(131, 131, 131) !important;
+}
+
+.Button:disabled:hover {
+    box-shadow: none;
+    color: rgb(131, 131, 131) !important;
 }
