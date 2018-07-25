@@ -22,9 +22,11 @@ class Dashboard extends Component {
                 <div className={cssClass.OuterWrapper}>
                     {" "}
                     <div className={cssClass.InnerWrapper}>
-                        <div className={cssClass.Container}>
-                            View Your Profile
-                        </div>
+                        <Link to="/dashboard/profile">
+                            <div className={cssClass.Container}>
+                                View Your Profile
+                            </div>
+                        </Link>
                         <div className={cssClass.Container}>
                             Edit Your Profile
                         </div>

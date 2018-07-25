@@ -12,6 +12,7 @@ import * as actions from "./store/actions/index";
 import AdminPanel from "./containers/AdminPanel/AdminPanel";
 import CreatePost from "./containers/CreatePost/CreatePost";
 import PostListDashboard from "./containers/Dashboard/PostList/PostList";
+import UserProfileView from "./containers/Dashboard/UserProfileView/UserProfileView";
 
 class App extends Component {
     componentDidMount() {
@@ -21,6 +22,7 @@ class App extends Component {
     render() {
         const routesForLoggedInUsers = (
             <Switch>
+                <Route path="/dashboard/profile" component={UserProfileView} />
                 <Route
                     path="/dashboard/post-list"
                     component={PostListDashboard}

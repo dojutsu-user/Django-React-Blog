@@ -10,12 +10,14 @@ import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import AuthReducer from "./store/reducers/auth";
 import PostReducer from "./store/reducers/post";
+import UserReducer from "./store/reducers/user";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootStore = combineReducers({
     auth: AuthReducer,
-    post: PostReducer
+    post: PostReducer,
+    user: UserReducer
 });
 
 const store = createStore(rootStore, composeEnhancers(applyMiddleware(thunk)));
