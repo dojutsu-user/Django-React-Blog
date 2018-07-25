@@ -11,11 +11,11 @@ class UserProfile(models.Model):
 
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='profile')
-    website = models.URLField(null=True, blank=True)
-    bio = models.TextField(null=True, blank=True, max_length=100)
-    country = models.CharField(max_length=20, null=True, blank=True)
-    facebook_url = models.URLField(null=True, blank=True)
-    twitter_handler = models.CharField(max_length=40, null=True, blank=True)
+    website = models.URLField(blank=True, default="")
+    bio = models.TextField(blank=True, max_length=100, default="")
+    country = models.CharField(max_length=20, blank=True, default="")
+    facebook_url = models.URLField(blank=True, default="")
+    twitter_handler = models.CharField(max_length=40, blank=True, default="")
 
     def __str__(self):
         try:

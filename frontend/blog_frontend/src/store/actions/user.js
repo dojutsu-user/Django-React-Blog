@@ -29,3 +29,38 @@ export const userProfileView = config => {
             .catch(error => userProfileViewFail(error));
     };
 };
+
+export const userProfileEditInit = () => {
+    return {
+        type: actionTypes.USER_PROFILE_EDIT_INIT
+    };
+};
+
+export const userProfileEditSuccess = data => {
+    return {
+        type: actionTypes.USER_PROFILE_EDIT_SUCCESS,
+        data: data
+    };
+};
+
+export const userProfileEditFail = error => {
+    return {
+        type: actionTypes.USER_PROFILE_EDIT_FAIL,
+        error: error
+    };
+};
+
+export const userProfileEdit = (updatedProfile, config) => {
+    return dispatch => {
+        dispatch(userProfileEditInit());
+        AxiosInstance.patch("/dashboard/profile/", updatedProfile, config)
+            .then(response => {
+                alert("Profile Updated Successfully");
+                dispatch(userProfileEditSuccess(response.data));
+            })
+            .catch(error => {
+                alert("Something Went Wrong... Try Again");
+                dispatch(userProfileEditFail(error));
+            });
+    };
+};

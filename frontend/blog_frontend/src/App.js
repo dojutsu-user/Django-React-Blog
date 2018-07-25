@@ -13,6 +13,7 @@ import AdminPanel from "./containers/AdminPanel/AdminPanel";
 import CreatePost from "./containers/CreatePost/CreatePost";
 import PostListDashboard from "./containers/Dashboard/PostList/PostList";
 import UserProfileView from "./containers/Dashboard/UserProfileView/UserProfileView";
+import UserProfileEdit from "./containers/Dashboard/UserProfileEdit/UserProfileEdit";
 
 class App extends Component {
     componentDidMount() {
@@ -22,6 +23,12 @@ class App extends Component {
     render() {
         const routesForLoggedInUsers = (
             <Switch>
+                {this.props.isUserProfile ? (
+                    <Route
+                        path="/dashboard/profile/edit"
+                        component={UserProfileEdit}
+                    />
+                ) : null}
                 <Route path="/dashboard/profile" component={UserProfileView} />
                 <Route
                     path="/dashboard/post-list"
@@ -59,7 +66,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return {
-        isAuth: state.auth.token !== null
+        isAuth: state.auth.token !== null,
+        isUserProfile: state.user.userProfile !== null
     };
 };
 

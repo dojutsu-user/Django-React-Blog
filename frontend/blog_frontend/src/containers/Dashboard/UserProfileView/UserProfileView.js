@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import cssClass from "./UserProfileView.css";
 import Spinner from "../../../components/UI/Spinner/Spinner";
@@ -99,7 +100,9 @@ class UserProfileView extends Component {
             <Aux>
                 <div className={cssClass.OuterWrapper}>{profile}</div>
                 <div className={cssClass.Edit}>
-                    <Button disabled={false}>Edit Profile</Button>
+                    <Link to="/dashboard/profile/edit">
+                        <Button disabled={false}>Edit Profile</Button>
+                    </Link>
                 </div>
             </Aux>
         );

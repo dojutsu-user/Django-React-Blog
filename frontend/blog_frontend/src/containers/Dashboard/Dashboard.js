@@ -27,9 +27,6 @@ class Dashboard extends Component {
                                 View Your Profile
                             </div>
                         </Link>
-                        <div className={cssClass.Container}>
-                            Edit Your Profile
-                        </div>
                     </div>
                     <div className={cssClass.InnerWrapper}>
                         <Link to="/dashboard/create-new-post">
