@@ -1,8 +1,10 @@
 from django.urls import path
 
 from .post import views as post_views
+from .user_profile import views as user_profile_views
 
 urlpatterns = [
     path('create-new-post/', post_views.post_create_view),
     path('post-list/', post_views.PostListView.as_view()),
+    path('profile/', user_profile_views.UserProfileView.as_view()),
 ]
