@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import Aux from "../../hoc/Aux/Aux";
 import cssClass from "./AdminPanel.css";
@@ -13,7 +14,14 @@ class AdminPanel extends Component {
                 <div className={cssClass.OuterWrapper}>
                     {" "}
                     <div className={cssClass.InnerWrapper}>
-                        <div className={cssClass.Container}>View All Users</div>
+                        <Link
+                            style={{ textDecoration: "none", color: "black" }}
+                            to="/admin-panel/user-list"
+                        >
+                            <div className={cssClass.Container}>
+                                View All Users
+                            </div>
+                        </Link>
                         <div className={cssClass.Container}>
                             Create A New User
                         </div>

@@ -13,7 +13,7 @@ class AdminUserListSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'password', 'username',
-                  'email', 'first_name', 'last_name']
+                  'email', 'first_name', 'last_name', 'is_active']
 
     def create(self, validated_data):
         raw_password = validated_data.pop('password')

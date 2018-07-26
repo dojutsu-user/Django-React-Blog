@@ -11,13 +11,15 @@ import registerServiceWorker from "./registerServiceWorker";
 import AuthReducer from "./store/reducers/auth";
 import PostReducer from "./store/reducers/post";
 import UserReducer from "./store/reducers/user";
+import AdminReducer from "./store/reducers/admin";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootStore = combineReducers({
     auth: AuthReducer,
     post: PostReducer,
-    user: UserReducer
+    user: UserReducer,
+    admin: AdminReducer
 });
 
 const store = createStore(rootStore, composeEnhancers(applyMiddleware(thunk)));

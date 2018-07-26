@@ -14,6 +14,7 @@ import CreatePost from "./containers/CreatePost/CreatePost";
 import PostListDashboard from "./containers/Dashboard/PostList/PostList";
 import UserProfileView from "./containers/Dashboard/UserProfileView/UserProfileView";
 import UserProfileEdit from "./containers/Dashboard/UserProfileEdit/UserProfileEdit";
+import AdminUserList from "./containers/AdminPanel/UserList/UserList";
 
 class App extends Component {
     componentDidMount() {
@@ -23,6 +24,7 @@ class App extends Component {
     render() {
         const routesForLoggedInUsers = (
             <Switch>
+                <Route path="/admin-panel/user-list" component={AdminUserList} />
                 {this.props.isUserProfile ? (
                     <Route
                         path="/dashboard/profile/edit"
