@@ -1,6 +1,5 @@
 import * as actionsTypes from "./actionTypes";
 import AxiosInstance from "../../AxiosInstance";
-import Axios from "axios";
 
 export const sendNewPostToServerInit = () => {
     return {

@@ -28,6 +28,16 @@ const input = props => {
                     onChange={props.changed}
                 />
             );
+        default:
+            inputClasses.push(cssClass.TextField);
+            return (
+                <input
+                    className={inputClasses.join(" ")}
+                    {...props.elementConfig}
+                    value={props.value}
+                    onChange={props.changed}
+                />
+            );
     }
 };
 
