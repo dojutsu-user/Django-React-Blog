@@ -1,6 +1,7 @@
 import React from "react";
 
 import cssClass from "./Input.css";
+import Aux from "../../../hoc/Aux/Aux";
 
 const input = props => {
     const inputClasses = [];
@@ -28,15 +29,21 @@ const input = props => {
                     onChange={props.changed}
                 />
             );
-        default:
-            inputClasses.push(cssClass.TextField);
+        case "checkbox":
+            inputClasses.push(cssClass.Checkbox);
             return (
-                <input
-                    className={inputClasses.join(" ")}
-                    {...props.elementConfig}
-                    value={props.value}
-                    onChange={props.changed}
-                />
+                <Aux>
+                    <input
+                        className={inputClasses.join(" ")}
+                        {...props.elementConfig}
+                        value={props.value}
+                        onChange={props.changed}
+                    />{" "}
+                    <span className={cssClass.CheckboxText}>
+                        {props.elementConfig.label}
+                    </span>
+                    <br />
+                </Aux>
             );
     }
 };

@@ -33,3 +33,22 @@
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
 }
+
+.Checkbox {
+    display: block;
+    height: 30px;
+    width: 20px;
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+.CheckboxText {
+    display: inline-block;
+    font-family: "PT Sans", sans-serif;
+    height: 50px;
+    width: 50px;
+    font-size: 17px;
+    padding-left: 10px;
+    padding-top: 3px;
+}
