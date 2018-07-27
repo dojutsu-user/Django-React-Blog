@@ -33,3 +33,38 @@ export const adminUserListView = config => {
             });
     };
 };
+
+export const adminCreateUserInit = () => {
+    return {
+        type: actionsTypes.ADMIN_CREATE_USER_INIT
+    };
+};
+
+export const adminCreateUserSuccess = data => {
+    return {
+        type: actionsTypes.ADMIN_CREATE_USER_SUCCESS,
+        data: data
+    };
+};
+
+export const adminCreateUserFail = error => {
+    return {
+        type: actionsTypes.ADMIN_CREATE_USER_FAIL,
+        error: error
+    };
+};
+
+export const adminCreateUser = (data, config) => {
+    return dispatch => {
+        dispatch(adminCreateUserInit());
+        AxiosInstance.post("/admin-panel/users/", data, config)
+            .then(response => {
+                alert("User Created Successfully");
+                dispatch(adminCreateUserSuccess(response.data));
+            })
+            .catch(error => {
+                alert("ERROR..!! Something Went Wrong");
+                adminCreateUserFail(error);
+            });
+    };
+};

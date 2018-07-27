@@ -22,9 +22,14 @@ class AdminPanel extends Component {
                                 View All Users
                             </div>
                         </Link>
-                        <div className={cssClass.Container}>
-                            Create A New User
-                        </div>
+                        <Link
+                            style={{ textDecoration: "none", color: "black" }}
+                            to="/admin-panel/create-user"
+                        >
+                            <div className={cssClass.Container}>
+                                Create A New User
+                            </div>
+                        </Link>
                     </div>
                     <div className={cssClass.InnerWrapper}>
                         <div className={cssClass.Container}>View Posts</div>
