@@ -11,7 +11,7 @@ User = get_user_model()
 
 
 class AdminUserListView(generics.ListCreateAPIView):
-    queryset = User.objects.all()
+    queryset = User.objects.all().order_by('-date_joined')
     serializer_class = AdminUserListSerializer
     permission_classes = (IsAdminUser,)
     authentication_classes = (JSONWebTokenAuthentication,)
