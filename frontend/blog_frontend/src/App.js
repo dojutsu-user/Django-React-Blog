@@ -16,6 +16,7 @@ import UserProfileView from "./containers/Dashboard/UserProfileView/UserProfileV
 import UserProfileEdit from "./containers/Dashboard/UserProfileEdit/UserProfileEdit";
 import AdminUserList from "./containers/AdminPanel/UserList/UserList";
 import AdminCreateUser from "./containers/AdminPanel/CreateUser/CreateUser";
+import AdminViewAllPosts from "./containers/AdminPanel/PostList/PostList";
 
 class App extends Component {
     componentDidMount() {
@@ -25,6 +26,10 @@ class App extends Component {
     render() {
         const routesForLoggedInUsers = (
             <Switch>
+                <Route
+                    path="/admin-panel/all-posts"
+                    component={AdminViewAllPosts}
+                />
                 <Route
                     path="/admin-panel/create-user"
                     component={AdminCreateUser}

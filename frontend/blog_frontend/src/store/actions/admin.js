@@ -68,3 +68,37 @@ export const adminCreateUser = (data, config) => {
             });
     };
 };
+
+export const adminViewAllPostsInit = () => {
+    return {
+        type: actionsTypes.ADMIN_VIEW_ALL_POSTS_INIT
+    };
+};
+
+export const adminViewAllPostsSuccess = postsData => {
+    return {
+        type: actionsTypes.ADMIN_VIEW_ALL_POSTS_SUCCESS,
+        postsData: postsData
+    };
+};
+
+export const adminViewAllPostsFail = error => {
+    return {
+        type: actionsTypes.ADMIN_VIEW_ALL_POSTS_FAIL,
+        error: error
+    };
+};
+
+export const adminViewAllPosts = config => {
+    return dispatch => {
+        dispatch(adminViewAllPostsInit());
+        AxiosInstance.get("/admin-panel/posts/", config)
+            .then(response => {
+                dispatch(adminViewAllPostsSuccess(response.data));
+            })
+            .catch(error => {
+                alert("ERROR..!! Something Went Wrong");
+                dispatch(adminViewAllPostsFail(error));
+            });
+    };
+};
