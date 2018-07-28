@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import cssClass from "./PostList.css";
 import * as actions from "../../../store/actions/index";
 import Spinner from "../../../components/UI/Spinner/Spinner";
+import Button from "../../../components/UI/Button/Button";
 
 class PostList extends Component {
     getPostsList = () => {
@@ -41,6 +42,18 @@ class PostList extends Component {
                               </span>
                           )}
                       </td>
+                      {!post.is_published ? (
+                          <td>
+                              <div className={cssClass.Actions}>
+                                  <Button>Edit</Button>
+                              </div>
+                              <Button red>Delete</Button>
+                          </td>
+                      ) : (
+                          <td>
+                              <Button red>Delete</Button>
+                          </td>
+                      )}
                   </tr>
               ))
             : null;
@@ -57,6 +70,7 @@ class PostList extends Component {
                                 <th>Total Comments</th>
                                 <th>Date Created</th>
                                 <th>Status</th>
+                                <th />
                             </tr>
                         </thead>
                         <tbody>{postsList}</tbody>
