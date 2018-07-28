@@ -27,3 +27,33 @@
     box-shadow: none;
     color: rgb(131, 131, 131) !important;
 }
+
+.Danger {
+    outline: none;
+    border: 2px solid rgb(255, 105, 105);
+    padding: 9px;
+    background-color: white;
+    cursor: pointer;
+    margin-right: 15px;
+    min-width: 80px;
+    transition: all 0.1s ease-in-out;
+}
+
+.Danger:hover {
+    box-shadow: 0 3px 4px #ccc;
+    background-color: rgb(255, 105, 105);
+    color: white;
+    transition: all 0.1s ease-out;
+}
+
+.Danger:disabled {
+    cursor: not-allowed;
+    background-color: rgb(211, 211, 211);
+    border: 2px solid rgb(211, 211, 211);
+    color: rgb(131, 131, 131) !important;
+}
+
+.Danger:disabled:hover {
+    box-shadow: none;
+    color: rgb(131, 131, 131) !important;
+}
