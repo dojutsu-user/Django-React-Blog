@@ -2,6 +2,7 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import cssClass from "./PostList.css";
 import * as actions from "../../../store/actions/index";
@@ -45,7 +46,9 @@ class PostList extends Component {
                       {!post.is_published ? (
                           <td>
                               <div className={cssClass.Actions}>
-                                  <Button>Edit</Button>
+                                  <Link to={"/" + post.slug + "/edit"}>
+                                      <Button>Edit</Button>
+                                  </Link>
                               </div>
                               <Button red>Delete</Button>
                           </td>
