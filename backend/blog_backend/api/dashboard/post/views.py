@@ -100,3 +100,36 @@ def post_update_view(request):
 
         else:
             return Response({'detail': 'You Are Not Authorised To Edit This Post'}, status.HTTP_403_FORBIDDEN)
+
+    else:
+        return Response({'detail': 'You Are Not Authorised To Edit This Post'}, status.HTTP_403_FORBIDDEN)
+
+
+@api_view(['DELETE'])
+def post_delete_view(request):
+    """View To Delete A Post For Logged In Users"""
+
+    if request.method == 'DELETE':
+        token_type, token = request.META.get('HTTP_AUTHORIZATION').split()
+        if(token_type != 'JWT'):
+            return Response({'detail': 'No JWT Authentication Token Found'}, status=status.HTTP_400_BAD_REQUEST)
+
+        token_data = {'token': token}
+
+        try:
+            valid_data = VerifyJSONWebTokenSerializer().validate(token_data)
+            logged_in_user = valid_data.get('user')
+        except:
+            return Response({'detail': 'Invalid Token'}, status.HTTP_400_BAD_REQUEST)
+
+        instance = Post.objects.get(slug=request.data.get('slug'))
+        admin_user = User.objects.get(pk=1)  # PK Of Admin User Is 1
+
+        if(instance.author == logged_in_user or logged_in_user == admin_user):
+            instance.delete()
+            return Response({}, status=status.HTTP_200_OK)
+        else:
+            return Response({'detail': 'Something Went Wrong.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    else:
+        return Response({'detail': 'You Are Not Authorised To Edit This Post'}, status.HTTP_403_FORBIDDEN)
