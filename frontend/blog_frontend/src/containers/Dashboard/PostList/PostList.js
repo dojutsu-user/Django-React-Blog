@@ -89,7 +89,7 @@ class PostList extends Component {
                               <Button
                                   red
                                   clicked={this.postDeleteHandler}
-                                  slug={post.slug}
+                                  identifier={post.slug}
                               >
                                   Delete
                               </Button>

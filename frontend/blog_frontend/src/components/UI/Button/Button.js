@@ -16,10 +16,10 @@ const button = props => {
         </button>
     );
 
-    if (props.clicked && props.slug) {
+    if (props.clicked && props.identifier) {
         button = (
             <button
-                onClick={() => props.clicked(props.slug)}
+                onClick={() => props.clicked(props.identifier)}
                 disabled={props.disabled}
                 className={css}
             >
@@ -27,6 +27,7 @@ const button = props => {
             </button>
         );
     }
+
     return button;
 };
 

@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 import * as actions from "../../../store/actions/index";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import cssClass from "./UserList.css";
+import Button from "../../../components/UI/Button/Button";
+import AxiosInstance from "../../../AxiosInstance";
 
 class UserList extends Component {
     getUsersList = () => {
@@ -24,6 +26,31 @@ class UserList extends Component {
         this.getUsersList();
     }
 
+    userDeleteHandler = userPk => {
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                AUTHORIZATION: "JWT " + this.props.token
+            },
+            data: {
+                pk: userPk
+            }
+        };
+
+        let confirmation = window.confirm("Do You Want To Delete This User?");
+
+        if (confirmation == true) {
+            AxiosInstance.delete("/admin-panel/users/detail/", config)
+                .then(response => {
+                    alert("Post Deleted");
+                    this.getUsersList();
+                })
+                .catch(error => {
+                    alert("Something Went Wrong");
+                });
+        }
+    };
+
     render() {
         let userList = null;
         if (this.props.userList) {
@@ -39,6 +66,20 @@ class UserList extends Component {
                     ) : (
                         <td style={{ color: "red" }}>Not Active</td>
                     )}
+                    <td>
+                        <div className={cssClass.Actions}>
+                            <Link to="">
+                                <Button>Edit</Button>
+                            </Link>
+                        </div>
+                        <Button
+                            red
+                            clicked={this.userDeleteHandler}
+                            identifier={user.id}
+                        >
+                            Delete
+                        </Button>
+                    </td>
                 </tr>
             ));
         }
@@ -57,6 +98,7 @@ class UserList extends Component {
                                 <th>Username</th>
                                 <th>Email</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>{userList}</tbody>
@@ -65,15 +107,7 @@ class UserList extends Component {
             );
         }
 
-        return (
-            <div>
-                {this.props.userList ? (
-                    userListTable
-                ) : (
-                    null
-                )}
-            </div>
-        );
+        return <div>{this.props.userList ? userListTable : null}</div>;
     }
 }
 
