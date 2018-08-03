@@ -21,3 +21,10 @@ class PostListSerializer(serializers.ModelSerializer):
         model = Post
         fields = ('title', 'is_published', 'slug',
                   'total_comments', 'created_on')
+
+class PostUpdateSerializer(serializers.ModelSerializer):
+    """Serializer For Creating A Post For Logged In Users"""
+
+    class Meta:
+        model = Post
+        fields = ('title', 'body', 'short_description')

@@ -7,4 +7,5 @@ urlpatterns = [
     path('create-new-post/', post_views.post_create_view),
     path('post-list/', post_views.PostListView.as_view()),
     path('profile/', user_profile_views.UserProfileView.as_view()),
+    path('update-post/', post_views.post_update_view)
 ]
