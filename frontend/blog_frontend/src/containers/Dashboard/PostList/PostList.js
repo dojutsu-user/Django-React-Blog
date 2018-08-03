@@ -8,6 +8,7 @@ import cssClass from "./PostList.css";
 import * as actions from "../../../store/actions/index";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import Button from "../../../components/UI/Button/Button";
+import AxiosInstance from "../../../AxiosInstance";
 
 class PostList extends Component {
     getPostsList = () => {
@@ -26,6 +27,31 @@ class PostList extends Component {
     componentWillMount() {
         this.getPostsList();
     }
+
+    postDeleteHandler = slug => {
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                AUTHORIZATION: "JWT " + this.props.token
+            },
+            data: {
+                slug: slug
+            }
+        };
+
+        let confirmation = window.confirm("Do You Want To Delete This Post?");
+
+        if (confirmation == true) {
+            AxiosInstance.delete("/dashboard/delete-post/", config)
+                .then(response => {
+                    alert("Post Deleted");
+                    this.getPostsList();
+                })
+                .catch(error => {
+                    alert("Something Went Wrong");
+                });
+        }
+    };
 
     render() {
         let postsList = this.props.userPostsList
@@ -50,11 +76,23 @@ class PostList extends Component {
                                       <Button>Edit</Button>
                                   </Link>
                               </div>
-                              <Button red>Delete</Button>
+                              <Button
+                                  red
+                                  clicked={this.postDeleteHandler}
+                                  slug={post.slug}
+                              >
+                                  Delete
+                              </Button>
                           </td>
                       ) : (
                           <td>
-                              <Button red>Delete</Button>
+                              <Button
+                                  red
+                                  clicked={this.postDeleteHandler}
+                                  slug={post.slug}
+                              >
+                                  Delete
+                              </Button>
                           </td>
                       )}
                   </tr>

@@ -9,11 +9,25 @@ const button = props => {
     } else {
         css = cssClass.Button;
     }
-    return (
+
+    let button = (
         <button disabled={props.disabled} className={css}>
             {props.children}
         </button>
     );
+
+    if (props.clicked && props.slug) {
+        button = (
+            <button
+                onClick={() => props.clicked(props.slug)}
+                disabled={props.disabled}
+                className={css}
+            >
+                {props.children}
+            </button>
+        );
+    }
+    return button;
 };
 
 export default button;
