@@ -7,5 +7,5 @@ urlpatterns = [
     path('posts/', post_views.AdminPostListView.as_view()),
     path('posts/view/<slug>/', post_views.AdminPostDetailView.as_view()),
     path('users/', user_views.AdminUserListView.as_view()),
-    path('users/<pk>/', user_views.AdminUserDetailView.as_view()),
+    path('users/detail/', user_views.AdminUserDetailView.as_view()),
 ]
