@@ -7,6 +7,7 @@ import Spinner from "../../../components/UI/Spinner/Spinner";
 import Button from "../../../components/UI/Button/Button";
 import Input from "../../../components/UI/Input/Input";
 import Aux from "../../../hoc/Aux/Aux";
+import * as actions from "../../../store/actions/index";
 
 class PostEdit extends Component {
     state = {
@@ -119,13 +120,14 @@ class PostEdit extends Component {
         for (let key in this.state.postEditForm) {
             updatedForm[key] = this.state.postEditForm[key].value;
         }
+        updatedForm["slug"] = this.props.match.params.slug;
         const config = {
             headers: {
                 "Content-Type": "application/json",
                 AUTHORIZATION: "JWT " + this.props.token
             }
         };
-        console.log(this.state.postEditForm);
+        this.props.onUserPostEdit(updatedForm, config);
     };
 
     render() {
@@ -174,14 +176,29 @@ class PostEdit extends Component {
                 </Aux>
             );
         }
-        return <div className={cssClass.OuterWrapper}>{form}</div>;
+        return this.props.loading ? (
+            <Spinner />
+        ) : (
+            <div className={cssClass.OuterWrapper}>{form}</div>
+        );
     }
 }
 
 const mapStateToProps = state => {
     return {
-        token: state.auth.token
+        token: state.auth.token,
+        loading: state.user.loading
     };
 };
 
-export default connect(mapStateToProps)(PostEdit);
+const mapDispatchToProps = dispatch => {
+    return {
+        onUserPostEdit: (updatedPost, config) =>
+            dispatch(actions.userPostEdit(updatedPost, config))
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(PostEdit);

@@ -55,6 +55,30 @@ const userProfileEditFail = (state, action) => {
     });
 };
 
+const userPostEditInit = (state, action) => {
+    return updateObject(state, {
+        loading: true,
+        userProfile: null,
+        error: null
+    });
+};
+
+const userPostEditSuccess = (state, action) => {
+    return updateObject(state, {
+        loading: false,
+        userProfile: null,
+        error: null
+    });
+};
+
+const userPostEditFail = (state, action) => {
+    return updateObject(state, {
+        loading: false,
+        userProfile: null,
+        error: action.error
+    });
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.USER_PROFILE_VIEW_INIT:
@@ -69,6 +93,12 @@ const reducer = (state = initialState, action) => {
             return userProfileEditSuccess(state, action);
         case actionTypes.USER_PROFILE_EDIT_FAIL:
             return userProfileEditFail(state, action);
+        case actionTypes.USER_POST_EDIT_INIT:
+            return userPostEditInit(state, action);
+        case actionTypes.USER_POST_EDIT_SUCCESS:
+            return userPostEditSuccess(state, action);
+        case actionTypes.USER_POST_EDIT_FAIL:
+            return userPostEditFail(state, action);
         default:
             return state;
     }

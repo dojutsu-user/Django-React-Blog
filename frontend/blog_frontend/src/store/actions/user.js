@@ -64,3 +64,37 @@ export const userProfileEdit = (updatedProfile, config) => {
             });
     };
 };
+
+export const userPostEditInit = () => {
+    return {
+        type: actionTypes.USER_POST_EDIT_INIT
+    };
+};
+
+export const userPostEditSuccess = () => {
+    return {
+        type: actionTypes.USER_POST_EDIT_SUCCESS
+    };
+};
+
+export const userPostEditFail = error => {
+    return {
+        type: actionTypes.USER_POST_EDIT_FAIL,
+        error: error
+    };
+};
+
+export const userPostEdit = (updatedPost, config) => {
+    return dispatch => {
+        dispatch(userPostEditInit());
+        AxiosInstance.post("/dashboard/update-post/", updatedPost, config)
+            .then(response => {
+                alert("Post Updated Successfully");
+                dispatch(userPostEditSuccess());
+            })
+            .catch(error => {
+                alert("Something Went Wrong... Try Again");
+                dispatch(userPostEditFail(error));
+            });
+    };
+};
