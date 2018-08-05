@@ -52,3 +52,8 @@
     padding-left: 10px;
     padding-top: 3px;
 }
+
+.TextField:read-only:focus {
+    box-shadow: none;
+    border: 1px solid #a9a9a9;
+}
