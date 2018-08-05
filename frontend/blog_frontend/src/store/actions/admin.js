@@ -102,3 +102,37 @@ export const adminViewAllPosts = config => {
             });
     };
 };
+
+export const adminEditUserInit = () => {
+    return {
+        type: actionsTypes.ADMIN_EDIT_USER_INIT
+    };
+};
+
+export const adminEditUserSuccess = () => {
+    return {
+        type: actionsTypes.ADMIN_EDIT_USER_SUCCESS
+    };
+};
+
+export const adminEditUserFail = error => {
+    return {
+        type: actionsTypes.ADMIN_EDIT_USER_FAIL,
+        error: error
+    };
+};
+
+export const adminEditUser = config => {
+    return dispatch => {
+        dispatch(adminEditUserInit());
+        AxiosInstance.patch("/admin-panel/users/detail/", null, config)
+            .then(response => {
+                alert("Task Completed Successfully");
+                dispatch(adminEditUserSuccess());
+            })
+            .catch(error => {
+                alert("ERROR..!! Something Went Wrong");
+                dispatch(adminCreateUserFail(error));
+            });
+    };
+};

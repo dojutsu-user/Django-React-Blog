@@ -18,6 +18,7 @@ import AdminUserList from "./containers/AdminPanel/UserList/UserList";
 import AdminCreateUser from "./containers/AdminPanel/CreateUser/CreateUser";
 import AdminViewAllPosts from "./containers/AdminPanel/PostList/PostList";
 import PostEdit from "./containers/Dashboard/PostEdit/PostEdit";
+import AdminEditUser from "./containers/AdminPanel/EditUser/EditUser";
 
 class App extends Component {
     componentDidMount() {
@@ -27,6 +28,10 @@ class App extends Component {
     render() {
         const routesForLoggedInUsers = (
             <Switch>
+                <Route
+                    path="/admin-panel/users/detail/:pk"
+                    component={AdminEditUser}
+                />
                 <Route path="/:slug/edit" component={PostEdit} />
                 <Route
                     path="/admin-panel/all-posts"

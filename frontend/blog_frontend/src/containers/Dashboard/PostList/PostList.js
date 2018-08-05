@@ -49,6 +49,7 @@ class PostList extends Component {
                 })
                 .catch(error => {
                     alert("Something Went Wrong");
+                    this.getPostsList();
                 });
         }
     };

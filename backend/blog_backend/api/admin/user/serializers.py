@@ -40,7 +40,8 @@ class AdminUserDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'password', 'username', 'email', 'first_name', 'last_name',
-                  'website', 'bio', 'country', 'facebook_url', 'twitter_handler']
+                  'website', 'bio', 'country', 'facebook_url', 'twitter_handler',
+                  'is_active', 'is_staff', 'is_superuser']
 
     def update(self, instance, validated_data):
         """Overwriting The Default update Method For This Serializer

@@ -68,7 +68,7 @@ class UserList extends Component {
                     )}
                     <td>
                         <div className={cssClass.Actions}>
-                            <Link to="">
+                            <Link to={"/admin-panel/users/detail/" + user.id}>
                                 <Button>Edit</Button>
                             </Link>
                         </div>
