@@ -193,7 +193,6 @@ class EditUser extends Component {
             })
             .catch(error => {
                 alert("Something Went Wrong");
-                console.log(error.response.data);
             });
     }
 
