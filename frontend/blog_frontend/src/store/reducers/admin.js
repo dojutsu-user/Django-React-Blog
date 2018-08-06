@@ -129,6 +129,36 @@ const adminEditUserFail = (state, action) => {
     });
 };
 
+const adminEditPostInit = (state, action) => {
+    return updateObject(state, {
+        newUser: null,
+        userList: null,
+        loading: true,
+        error: null,
+        allPosts: null
+    });
+};
+
+const adminEditPostSuccess = (state, action) => {
+    return updateObject(state, {
+        newUser: null,
+        userList: null,
+        loading: false,
+        error: null,
+        allPosts: null
+    });
+};
+
+const adminEditPostFail = (state, action) => {
+    return updateObject(state, {
+        newUser: null,
+        userList: null,
+        loading: false,
+        error: action.error,
+        allPosts: null
+    });
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADMIN_USER_LIST_VIEW_INIT:
@@ -155,6 +185,12 @@ const reducer = (state = initialState, action) => {
             return adminEditUserSuccess(state, action);
         case actionTypes.ADMIN_EDIT_USER_FAIL:
             return adminEditUserFail(state, action);
+        case actionTypes.ADMIN_EDIT_POST_INIT:
+            return adminEditPostInit(state, action);
+        case actionTypes.ADMIN_EDIT_POST_SUCCESS:
+            return adminEditPostSuccess(state, action);
+        case actionTypes.ADMIN_EDIT_POST_FAIL:
+            return adminEditPostFail(state, action);
         default:
             return state;
     }

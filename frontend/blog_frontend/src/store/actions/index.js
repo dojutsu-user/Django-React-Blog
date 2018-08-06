@@ -5,5 +5,6 @@ export {
     adminUserListView,
     adminCreateUser,
     adminViewAllPosts,
-    adminEditUser
+    adminEditUser,
+    adminEditPost
 } from "./admin";

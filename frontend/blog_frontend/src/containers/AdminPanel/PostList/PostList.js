@@ -62,7 +62,7 @@ class PostList extends Component {
                     )}
                     <td>
                         <div className={cssClass.Actions}>
-                            <Link to="">
+                            <Link to={"/admin-panel/posts/detail/" + post.slug}>
                                 <Button>Edit</Button>
                             </Link>
                         </div>

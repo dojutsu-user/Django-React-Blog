@@ -136,3 +136,42 @@ export const adminEditUser = config => {
             });
     };
 };
+
+export const adminEditPostInit = () => {
+    return {
+        type: actionsTypes.ADMIN_EDIT_POST_INIT
+    };
+};
+
+export const adminEditPostSuccess = () => {
+    return {
+        type: actionsTypes.ADMIN_EDIT_POST_SUCCESS
+    };
+};
+
+export const adminEditPostFail = error => {
+    return {
+        type: actionsTypes.ADMIN_EDIT_POST_FAIL,
+        error: error
+    };
+};
+
+export const adminEditPost = (config, slug) => {
+    return dispatch => {
+        dispatch(adminEditPostInit());
+        AxiosInstance.patch(
+            "/admin-panel/posts/view/" + slug + "/",
+            null,
+            config
+        )
+            .then(response => {
+                dispatch(adminEditPostSuccess());
+                alert("Post Edited Successfully");
+            })
+            .catch(error => {
+                dispatch(adminEditPostFail(error));
+                alert("ERROR...!! Something Went Wrong");
+                console.log(error.response.data);
+            });
+    };
+};
