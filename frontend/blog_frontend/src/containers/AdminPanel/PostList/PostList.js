@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import cssClass from "./PostList.css";
 import * as actions from "../../../store/actions/index";
 import Spinner from "../../../components/UI/Spinner/Spinner";
+import Button from "../../../components/UI/Button/Button";
+import AxiosInstance from "../../../AxiosInstance";
 
 class PostList extends Component {
-    componentDidMount() {
+    getAllPosts = () => {
         const config = {
             headers: {
                 "Content-Type": "application/json",
@@ -14,7 +17,35 @@ class PostList extends Component {
             }
         };
         this.props.onAdminViewAllPosts(config);
+    };
+    componentDidMount() {
+        this.getAllPosts();
     }
+
+    postDeleteHandler = slug => {
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                AUTHORIZATION: "JWT " + this.props.token
+            }
+        };
+
+        let confirmation = window.confirm("Do You Want To Delete This Post?");
+
+        if (confirmation == true) {
+            AxiosInstance.delete(
+                "/admin-panel/posts/view/" + slug + "/",
+                config
+            )
+                .then(response => {
+                    alert("Post Deleted");
+                    this.getAllPosts();
+                })
+                .catch(error => {
+                    alert("Something Went Wrong");
+                });
+        }
+    };
 
     render() {
         let postsList = this.props.allPosts;
@@ -29,6 +60,20 @@ class PostList extends Component {
                     ) : (
                         <td style={{ color: "red" }}>Not Published</td>
                     )}
+                    <td>
+                        <div className={cssClass.Actions}>
+                            <Link to="">
+                                <Button>Edit</Button>
+                            </Link>
+                        </div>
+                        <Button
+                            red
+                            clicked={this.postDeleteHandler}
+                            identifier={post.slug}
+                        >
+                            Delete
+                        </Button>
+                    </td>
                 </tr>
             ));
         }
@@ -45,6 +90,7 @@ class PostList extends Component {
                                 <th>Total Comments</th>
                                 <th>Author</th>
                                 <th>Status</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>{postsList}</tbody>
