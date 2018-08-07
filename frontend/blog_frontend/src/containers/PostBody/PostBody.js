@@ -33,9 +33,12 @@ class PostBody extends Component {
             });
     };
 
-    componentDidMount() {
+    renderWholePage = () => {
         this.getPostBody();
         this.getCommentsList();
+    };
+    componentDidMount() {
+        this.renderWholePage();
     }
 
     render() {
@@ -67,7 +70,7 @@ class PostBody extends Component {
                     <Comments commentsList={this.state.comments} />
                     <CommentForm
                         slug={this.props.match.params.slug}
-                        refresh={this.getCommentsList}
+                        refresh={this.renderWholePage}
                     />
                 </Aux>
             );
