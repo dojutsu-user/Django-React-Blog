@@ -1,0 +1,25 @@
+.Comment {
+    width: 70%;
+    margin: 25px auto;
+    padding: 0;
+    border: 1px solid #ccc;
+}
+
+.Detail {
+    padding: 5px 20px;
+    color: rgb(141, 141, 141);
+}
+
+.Body {
+    padding: 5px 20px;
+    color: black;
+}
+
+.Website {
+    padding: 5px 20px;
+    color: rgb(141, 141, 141);
+}
+
+.Website a {
+    color: rgb(141, 141, 141);
+}

@@ -1,3 +1,7 @@
+.CommentHeading {
+    margin-top: 40px;
+    font-family: "Cardo", serif;
+}
 .PostBodyDiv {
     width: 70%;
     margin: 0 auto;
@@ -7,15 +11,14 @@
 }
 
 .Title {
-    font-family: 'Cardo', serif;
-    font-weight: 100;
+    font-family: "Cardo", serif;
     color: rgb(32, 32, 32);
 }
 
 .PostBody {
     font-size: 1.5em;
     color: rgb(32, 32, 32);
-    font-family: 'PT Sans', sans-serif;
+    font-family: "PT Sans", sans-serif;
 }
 
 .PostInfo {
