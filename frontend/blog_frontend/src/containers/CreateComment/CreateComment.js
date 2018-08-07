@@ -124,8 +124,11 @@ class CreateComment extends Component {
         for (let key in this.state.commentCreationForm) {
             commentData[key] = this.state.commentCreationForm[key].value;
         }
-        // this.props.onCreateUser(userData, config);
-        console.log(commentData);
+        this.props.onCreateComment(
+            commentData,
+            this.props.slug,
+            this.props.refresh
+        );
     };
 
     render() {
@@ -184,11 +187,16 @@ class CreateComment extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
+    return {
+        loading: state.comment.loading
+    };
 };
 
 const mapDispatchToProps = dispatch => {
-    console.log(dispatch);
+    return {
+        onCreateComment: (data, slug, refreshFunction) =>
+            dispatch(actions.createComment(data, slug, refreshFunction))
+    };
 };
 
 export default connect(

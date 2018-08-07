@@ -8,3 +8,5 @@ export {
     adminEditUser,
     adminEditPost
 } from "./admin";
+
+export { createComment } from "./comment";

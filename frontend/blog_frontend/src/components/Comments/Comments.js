@@ -6,7 +6,7 @@ import Aux from "../../hoc/Aux/Aux";
 
 const comments = props => {
     return props.commentsList.map(comment => (
-        <Aux>
+        <Aux key={comment.published_on}>
             <Comment
                 name={comment.name}
                 website={comment.website}

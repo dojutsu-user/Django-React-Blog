@@ -65,7 +65,10 @@ class PostBody extends Component {
                         </h1>
                     </div>
                     <Comments commentsList={this.state.comments} />
-                    <CommentForm />
+                    <CommentForm
+                        slug={this.props.match.params.slug}
+                        refresh={this.getCommentsList}
+                    />
                 </Aux>
             );
         }
