@@ -38,3 +38,11 @@ class UserProfileSerializer(serializers.ModelSerializer):
         """This always creates a Profile if the User is missing one"""
 
         UserProfile.objects.update_or_create(user=user, defaults=profile_data)
+
+
+class UserStatus(serializers.ModelSerializer):
+    """DRF Serializer To Get The Status Of The User (Active/Superuser)"""
+
+    class Meta:
+        model = User
+        fields = ['is_active', 'is_superuser']

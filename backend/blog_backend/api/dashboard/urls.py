@@ -9,4 +9,5 @@ urlpatterns = [
     path('profile/', user_profile_views.UserProfileView.as_view()),
     path('update-post/', post_views.post_update_view),
     path('delete-post/', post_views.post_delete_view),
+    path('user-status/', user_profile_views.UserStatusView.as_view()),
 ]

@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework_jwt.serializers import VerifyJSONWebTokenSerializer
 from rest_framework.response import Response
+from rest_framework import status
 
 from .serializers import UserProfileSerializer
 
@@ -26,8 +27,22 @@ class UserProfileView(generics.RetrieveUpdateAPIView):
 
     def update(self, request, *args, **kwargs):
         instance = request.user
-        request.data['username'] = instance.username # Disabling The Updation Of Username
+        # Disabling The Updation Of Username
+        request.data['username'] = instance.username
         serializer = UserProfileSerializer(instance, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+
+
+class UserStatusView(generics.RetrieveAPIView):
+    """View To Return The User Status (Active/Superuser)"""
+
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (JSONWebTokenAuthentication,)
+
+    def get(self, request, *Args, **kwargs):
+        user_instance = request.user
+        data = {'is_active': user_instance.is_active,
+                'is_superuser': user_instance.is_superuser}
+        return Response(data, status=status.HTTP_200_OK)

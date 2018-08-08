@@ -50,6 +50,7 @@ export const authLogin = loginCredentials => {
             })
             .catch(error => {
                 dispatch(authLoginFail(error));
+                alert("ERROR");
             });
     };
 };

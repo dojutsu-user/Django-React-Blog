@@ -7,97 +7,116 @@ import Button from "../../../components/UI/Button/Button";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import Aux from "../../../hoc/Aux/Aux";
 import * as actions from "../../../store/actions/index";
+import AxiosInstance from "../../../AxiosInstance";
 
 class CreateUser extends Component {
     state = {
-        userCreationForm: {
-            username: {
-                elementType: "input",
-                elementConfig: {
-                    type: "text",
-                    placeholder: "Username"
-                },
-                value: "",
-                validation: {
-                    required: true,
-                    minLength: "5",
-                    maxLength: "20"
-                },
-                valid: false,
-                touched: false
-            },
-            password: {
-                elementType: "input",
-                elementConfig: {
-                    type: "password",
-                    placeholder: "Password"
-                },
-                value: "",
-                validation: {
-                    required: true,
-                    minLength: 8
-                },
-                valid: false,
-                touched: false
-            },
-            email: {
-                elementType: "input",
-                elementConfig: {
-                    type: "email",
-                    placeholder: "email"
-                },
-                value: "",
-                validation: {
-                    required: true,
-                    isEmail: true
-                },
-                valid: false,
-                touched: false
-            },
-            first_name: {
-                elementType: "input",
-                elementConfig: {
-                    type: "text",
-                    placeholder: "First Name"
-                },
-                value: "",
-                validation: {
-                    required: true,
-                    minLength: 5,
-                    maxLength: 30
-                },
-                valid: false,
-                touched: false
-            },
-            last_name: {
-                elementType: "input",
-                elementConfig: {
-                    type: "text",
-                    placeholder: "Last Name"
-                },
-                value: "",
-                validation: {
-                    required: true,
-                    minLength: 8,
-                    maxLength: 30
-                },
-                valid: false,
-                touched: false
-            },
-            is_active: {
-                elementType: "checkbox",
-                elementConfig: {
-                    type: "checkbox",
-                    label: "Active",
-                    name: "active"
-                },
-                value: false,
-                valid: true,
-                touched: false
-            }
-        },
+        userCreationForm: null,
         isUserCreationFormValid: false
     };
+
+    componentDidMount() {
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                AUTHORIZATION: "JWT " + this.props.token
+            }
+        };
+        AxiosInstance.get("/dashboard/user-status/", config)
+            .then(response => {
+                if (response.data.is_superuser) {
+                    this.setState({
+                        userCreationForm: {
+                            username: {
+                                elementType: "input",
+                                elementConfig: {
+                                    type: "text",
+                                    placeholder: "Username"
+                                },
+                                value: "",
+                                validation: {
+                                    required: true,
+                                    minLength: "5",
+                                    maxLength: "20"
+                                },
+                                valid: false,
+                                touched: false
+                            },
+                            password: {
+                                elementType: "input",
+                                elementConfig: {
+                                    type: "password",
+                                    placeholder: "Password"
+                                },
+                                value: "",
+                                validation: {
+                                    required: true,
+                                    minLength: 8
+                                },
+                                valid: false,
+                                touched: false
+                            },
+                            email: {
+                                elementType: "input",
+                                elementConfig: {
+                                    type: "email",
+                                    placeholder: "email"
+                                },
+                                value: "",
+                                validation: {
+                                    required: true,
+                                    isEmail: true
+                                },
+                                valid: false,
+                                touched: false
+                            },
+                            first_name: {
+                                elementType: "input",
+                                elementConfig: {
+                                    type: "text",
+                                    placeholder: "First Name"
+                                },
+                                value: "",
+                                validation: {
+                                    required: true,
+                                    minLength: 5,
+                                    maxLength: 30
+                                },
+                                valid: false,
+                                touched: false
+                            },
+                            last_name: {
+                                elementType: "input",
+                                elementConfig: {
+                                    type: "text",
+                                    placeholder: "Last Name"
+                                },
+                                value: "",
+                                validation: {
+                                    required: true,
+                                    minLength: 8,
+                                    maxLength: 30
+                                },
+                                valid: false,
+                                touched: false
+                            },
+                            is_active: {
+                                elementType: "checkbox",
+                                elementConfig: {
+                                    type: "checkbox",
+                                    label: "Active",
+                                    name: "active"
+                                },
+                                value: false,
+                                valid: true,
+                                touched: false
+                            }
+                        }
+                    });
+                }
+            })
+            .catch(error => console.log(error.response.data));
+    }
 
     checkValidity = (value, rules) => {
         let isValid = true;
