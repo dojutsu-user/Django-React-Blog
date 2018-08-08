@@ -57,11 +57,26 @@
 }
 
 .Title {
-    width: 15.7%;
-    padding: 0;
+    width: 8em;
     margin: 0 auto;
     margin-top: 100px;
-    font-family: "PT Sans", sans-serif;
+    font-family: "Cardo", sans-serif;
     font-size: 25px;
-    padding-bottom: 0;
+    padding: 0;
+    text-align:center;
+    color: black;
+    font-weight: 500;
+    border: 2px solid rgb(85, 207, 255);
+    margin-bottom: 20px;
+}
+
+.Title p {
+    padding: 0;
+    margin: 7px;
+}
+
+.Title:hover {
+    color: white;
+    background-color: rgb(85, 207, 255);
+    transition: all 0.1s ease
 }

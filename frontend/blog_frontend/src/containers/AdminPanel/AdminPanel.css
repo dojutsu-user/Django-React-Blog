@@ -51,38 +51,26 @@
     }
 }
 
-@keyframes swing {
-    15% {
-        transform: translateX(5px);
-    }
-    30% {
-        transform: translateX(-5px);
-    }
-    50% {
-        transform: translateX(3px);
-    }
-    65% {
-        transform: translateX(-3px);
-    }
-    80% {
-        transform: translateX(2px);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
 .Title {
-    width: 15.7%;
+    width: 8em;
     margin: 0 auto;
     margin-top: 100px;
-    font-family: "PT Sans", sans-serif;
+    font-family: "Cardo", sans-serif;
     font-size: 25px;
-    padding-bottom: 0;
-    color: red;
+    padding: 0;
+    text-align:center;
+    color: black;
+    font-weight: 500;
+    border: 2px solid rgb(85, 207, 255);
+}
+
+.Title p {
+    padding: 0;
+    margin: 7px;
 }
 
 .Title:hover {
-    animation: swing 1s ease;
-    animation-iteration-count: 1;
+    color: white;
+    background-color: rgb(85, 207, 255);
+    transition: all 0.1s ease
 }
