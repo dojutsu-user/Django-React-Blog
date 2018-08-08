@@ -9,4 +9,5 @@ urlpatterns = [
     path('users/', user_views.AdminUserListView.as_view()),
     path('users/detail/', user_views.AdminUserDetailView.as_view()),
     path('comments/list/all/', comment_views.AllCommentsListView.as_view()),
+    path('comments/detail/<pk>/', comment_views.CommentDetailView.as_view()),
 ]

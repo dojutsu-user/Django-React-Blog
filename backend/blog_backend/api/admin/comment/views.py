@@ -14,3 +14,11 @@ class AllCommentsListView(generics.ListAPIView):
     permission_classes = (IsAdminUser,)
     authentication_classes = (JSONWebTokenAuthentication,)
 
+
+class CommentDetailView(generics.RetrieveDestroyAPIView):
+    """View To Get The Details Of A Comment"""
+
+    queryset = Comment.objects.all()
+    serializer_class = CommentDetailSerializer
+    permission_classes = (IsAdminUser,)
+    authentication_classes = (JSONWebTokenAuthentication,)
