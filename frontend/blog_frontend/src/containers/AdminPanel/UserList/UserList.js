@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import * as actions from "../../../store/actions/index";
 import Spinner from "../../../components/UI/Spinner/Spinner";
@@ -39,7 +39,7 @@ class UserList extends Component {
 
         let confirmation = window.confirm("Do You Want To Delete This User?");
 
-        if (confirmation == true) {
+        if (confirmation) {
             AxiosInstance.delete("/admin-panel/users/detail/", config)
                 .then(response => {
                     alert("Post Deleted");

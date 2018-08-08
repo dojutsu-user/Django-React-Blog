@@ -45,6 +45,16 @@ const input = props => {
                     <br />
                 </Aux>
             );
+        default:
+            inputClasses.push(cssClass.TextField);
+            return (
+                <input
+                    className={inputClasses.join(" ")}
+                    {...props.elementConfig}
+                    value={props.value}
+                    onChange={props.changed}
+                />
+            );
     }
 };
 

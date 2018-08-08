@@ -32,7 +32,7 @@ class PostList extends Component {
 
         let confirmation = window.confirm("Do You Want To Delete This Post?");
 
-        if (confirmation == true) {
+        if (confirmation) {
             AxiosInstance.delete(
                 "/admin-panel/posts/view/" + slug + "/",
                 config

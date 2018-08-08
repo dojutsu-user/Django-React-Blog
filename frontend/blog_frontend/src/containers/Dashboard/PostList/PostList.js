@@ -41,7 +41,7 @@ class PostList extends Component {
 
         let confirmation = window.confirm("Do You Want To Delete This Post?");
 
-        if (confirmation == true) {
+        if (confirmation) {
             AxiosInstance.delete("/dashboard/delete-post/", config)
                 .then(response => {
                     alert("Post Deleted");

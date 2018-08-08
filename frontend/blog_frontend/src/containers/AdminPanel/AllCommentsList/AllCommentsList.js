@@ -34,7 +34,7 @@ class PostCommentsList extends Component {
             "Do You Want To Delete This Comment?"
         );
 
-        if (confirmation == true) {
+        if (confirmation) {
             AxiosInstance.delete(
                 "/admin-panel/comments/detail/" + pk + "/",
                 config
