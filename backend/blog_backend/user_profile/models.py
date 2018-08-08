@@ -18,10 +18,15 @@ class UserProfile(models.Model):
     twitter_handler = models.CharField(max_length=40, blank=True, default="")
 
     def __str__(self):
-        try:
-            return f'{self.user.first_name} {self.user.last_name}'
-        except:
-            return "Name Not Set For The User"
+        return f'{self.user.first_name} {self.user.last_name}'
+
+    @property
+    def full_name(self):
+        return f'{self.user.first_name} {self.user.last_name}'
+
+    @property
+    def username(self):
+        return self.user.username
 
 
 @receiver(post_save, sender=User)
