@@ -4,6 +4,8 @@ from comment.models import Comment
 from .serializers import CommentListSerializer, CommentDetailSerializer
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.permissions import IsAdminUser
+from rest_framework import status
+from rest_framework.response import Response
 
 
 class AllCommentsListView(generics.ListAPIView):
@@ -22,3 +24,13 @@ class CommentDetailView(generics.RetrieveDestroyAPIView):
     serializer_class = CommentDetailSerializer
     permission_classes = (IsAdminUser,)
     authentication_classes = (JSONWebTokenAuthentication,)
+
+
+class PostCommentsListView(generics.ListAPIView):
+    """View To Get The List Of Comments Of A Particular Post"""
+
+    def get(self, request, *args, **kwargs):
+        queryset = Comment.objects.filter(
+            post__slug=kwargs.get('slug')).order_by('-published_on')
+        serializer = CommentListSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
