@@ -17,7 +17,7 @@ class AllCommentsListView(generics.ListAPIView):
     authentication_classes = (JSONWebTokenAuthentication,)
 
 
-class CommentDetailView(generics.RetrieveDestroyAPIView):
+class CommentDetailView(generics.RetrieveUpdateDestroyAPIView):
     """View To Get The Details Of A Comment"""
 
     queryset = Comment.objects.all()
