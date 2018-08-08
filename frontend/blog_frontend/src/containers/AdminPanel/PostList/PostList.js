@@ -74,9 +74,11 @@ class PostList extends Component {
                             Delete
                         </Button>
                     </td>
-                    <Link to={"/admin-panel/comments/list/" + post.slug}>
-                        <td>View Comments</td>
-                    </Link>
+                    <td>
+                        <Link to={"/admin-panel/comments/list/" + post.slug}>
+                            View Comments
+                        </Link>
+                    </td>
                 </tr>
             ));
         }
