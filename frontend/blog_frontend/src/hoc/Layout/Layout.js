@@ -19,6 +19,8 @@ class Layout extends Component {
             };
         });
 
+    sidebarClosedHandler = () => this.setState({ isSidebarOpen: false });
+
     render() {
         return (
             <Aux>
@@ -30,6 +32,7 @@ class Layout extends Component {
                 <Sidebar
                     isSidebarOpen={this.state.isSidebarOpen}
                     isAuth={this.props.isAuth}
+                    closed={this.sidebarClosedHandler}
                 />
                 <Backdrop
                     isOpen={this.state.isSidebarOpen}
