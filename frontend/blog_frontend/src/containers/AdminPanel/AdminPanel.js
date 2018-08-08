@@ -49,6 +49,16 @@ class AdminPanel extends Component {
                             </div>
                         </Link>
                     </div>
+                    <div className={cssClass.InnerWrapper}>
+                        <Link
+                            style={{ textDecoration: "none", color: "black" }}
+                            to="/admin-panel/comments/list/all"
+                        >
+                            <div className={cssClass.Container}>
+                                View All Comments
+                            </div>
+                        </Link>
+                    </div>
                 </div>
             </Aux>
         );

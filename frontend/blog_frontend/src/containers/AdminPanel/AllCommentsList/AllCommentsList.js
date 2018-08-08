@@ -2,27 +2,27 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import cssClass from "./PostList.css";
+import cssClass from "./AllCommentsList.css";
 import * as actions from "../../../store/actions/index";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import Button from "../../../components/UI/Button/Button";
 import AxiosInstance from "../../../AxiosInstance";
 
-class PostList extends Component {
-    getAllPosts = () => {
+class PostCommentsList extends Component {
+    getAllComments = () => {
         const config = {
             headers: {
                 "Content-Type": "application/json",
                 AUTHORIZATION: "JWT " + this.props.token
             }
         };
-        this.props.onAdminViewAllPosts(config);
+        this.props.onAdminCommentListLoad(config, null, false);
     };
     componentDidMount() {
-        this.getAllPosts();
+        this.getAllComments();
     }
 
-    postDeleteHandler = slug => {
+    commentDeleteHandler = pk => {
         const config = {
             headers: {
                 "Content-Type": "application/json",
@@ -30,16 +30,18 @@ class PostList extends Component {
             }
         };
 
-        let confirmation = window.confirm("Do You Want To Delete This Post?");
+        let confirmation = window.confirm(
+            "Do You Want To Delete This Comment?"
+        );
 
         if (confirmation == true) {
             AxiosInstance.delete(
-                "/admin-panel/posts/view/" + slug + "/",
+                "/admin-panel/comments/detail/" + pk + "/",
                 config
             )
                 .then(response => {
-                    alert("Post Deleted");
-                    this.getAllPosts();
+                    alert("Comment Deleted");
+                    this.getAllComments();
                 })
                 .catch(error => {
                     alert("Something Went Wrong");
@@ -48,81 +50,83 @@ class PostList extends Component {
     };
 
     render() {
-        let postsList = this.props.allPosts;
-        if (this.props.allPosts) {
-            postsList = this.props.allPosts.map(post => (
-                <tr key={post.slug}>
-                    <td>{post.title}</td>
-                    <td>{post.total_comments}</td>
-                    <td>{post.author_full_name}</td>
-                    {post.is_published ? (
-                        <td style={{ color: "green" }}>Published</td>
+        let commentsList = this.props.allComments;
+        if (this.props.allComments) {
+            commentsList = this.props.allComments.map(comment => (
+                <tr key={comment.id}>
+                    <td>{comment.name}</td>
+                    <td>{comment.email}</td>
+                    <td>{comment.post_title}</td>
+                    <td>{new Date(comment.published_on).toDateString()}</td>
+                    {comment.is_displayed ? (
+                        <td style={{ color: "green" }}>Active</td>
                     ) : (
-                        <td style={{ color: "red" }}>Not Published</td>
+                        <td style={{ color: "red" }}>Not Active</td>
                     )}
                     <td>
                         <div className={cssClass.Actions}>
-                            <Link to={"/admin-panel/posts/detail/" + post.slug}>
+                            <Link to={"/admin-panel/comments/edit/" + comment.id + "/"}>
                                 <Button>Edit</Button>
                             </Link>
                         </div>
                         <Button
                             red
-                            clicked={this.postDeleteHandler}
-                            identifier={post.slug}
+                            clicked={this.commentDeleteHandler}
+                            identifier={comment.id}
                         >
                             Delete
                         </Button>
                     </td>
-                    <Link to={"/admin-panel/comments/list/" + post.slug}>
-                        <td>View Comments</td>
-                    </Link>
                 </tr>
             ));
         }
 
-        let postsListTable = <Spinner />;
+        let commentsListTable = <Spinner />;
 
-        if (!this.props.loading && this.props.allPosts) {
-            postsListTable = (
+        if (!this.props.loading && this.props.allComments) {
+            commentsListTable = (
                 <div className={cssClass.OuterWrapper}>
                     <table className={cssClass.Table}>
                         <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Total Comments</th>
-                                <th>Author</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Post Title</th>
+                                <th>Published On</th>
                                 <th>Status</th>
                                 <th>Actions</th>
-                                <th>Comments</th>
                             </tr>
                         </thead>
-                        <tbody>{postsList}</tbody>
+                        <tbody>{commentsList}</tbody>
                     </table>
                 </div>
             );
         }
 
-        return <div>{this.props.allPosts ? postsListTable : <Spinner />}</div>;
+        return (
+            <div>
+                {this.props.allComments ? commentsListTable : <Spinner />}
+            </div>
+        );
     }
 }
 
 const mapStateToProps = state => {
     return {
         token: state.auth.token,
-        loading: state.admin.loading,
-        allPosts: state.admin.allPosts
+        loading: state.comment.loading,
+        allComments: state.comment.allComments
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAdminViewAllPosts: config =>
-            dispatch(actions.adminViewAllPosts(config))
+        onAdminCommentListLoad: (config, slug, specific) =>
+            dispatch(actions.adminCommentListLoad(config, slug, specific))
     };
 };
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(PostList);
+)(PostCommentsList);

@@ -1,0 +1,37 @@
+.OuterWrapper {
+    margin: 0 auto;
+    margin-top: 100px;
+    overflow-x: auto;
+    width: 80%;
+    box-shadow: 0 2px 3px #ccc;
+}
+
+.Table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+.Table thead tr {
+    background-color: #dadada;
+}
+
+.Table tr {
+    border: 1px solid rgb(187, 187, 187);
+    margin: 30px;
+}
+
+.Table th,
+.Table td {
+    text-align: left;
+    padding: 10px;
+}
+
+.Table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.Actions {
+    margin-bottom: 10px;
+}

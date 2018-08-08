@@ -9,4 +9,8 @@ export {
     adminEditPost
 } from "./admin";
 
-export { createComment } from "./comment";
+export {
+    createComment,
+    adminCommentListLoad,
+    adminCommentEdit
+} from "./comment";

@@ -20,6 +20,9 @@ import AdminViewAllPosts from "./containers/AdminPanel/PostList/PostList";
 import PostEdit from "./containers/Dashboard/PostEdit/PostEdit";
 import AdminEditUser from "./containers/AdminPanel/EditUser/EditUser";
 import AdminEditPost from "./containers/AdminPanel/EditPost/EditPost";
+import AdminPostCommentsList from "./containers/AdminPanel/PostCommentsList/PostCommentsList";
+import AdminAllCommentsList from "./containers/AdminPanel/AllCommentsList/AllCommentsList";
+import AdminCommentEdit from "./containers/AdminPanel/CommentEdit/CommentEdit";
 
 class App extends Component {
     componentDidMount() {
@@ -29,6 +32,18 @@ class App extends Component {
     render() {
         const routesForLoggedInUsers = (
             <Switch>
+                <Route
+                    path="/admin-panel/comments/edit/:pk"
+                    component={AdminCommentEdit}
+                />
+                <Route
+                    path="/admin-panel/comments/list/all"
+                    component={AdminAllCommentsList}
+                />
+                <Route
+                    path="/admin-panel/comments/list/:slug"
+                    component={AdminPostCommentsList}
+                />
                 <Route
                     path="/admin-panel/posts/detail/:slug"
                     component={AdminEditPost}
