@@ -98,6 +98,7 @@ class UserProfileView extends Component {
         }
         return (
             <Aux>
+                <div className={cssClass.Title}>Your Profile</div>
                 <div className={cssClass.OuterWrapper}>{profile}</div>
                 <div className={cssClass.Edit}>
                     <Link to="/dashboard/profile/edit">

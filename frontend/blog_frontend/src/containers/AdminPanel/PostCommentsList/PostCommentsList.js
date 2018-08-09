@@ -7,6 +7,7 @@ import * as actions from "../../../store/actions/index";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import Button from "../../../components/UI/Button/Button";
 import AxiosInstance from "../../../AxiosInstance";
+import Aux from "../../../hoc/Aux/Aux";
 
 class PostCommentsList extends Component {
     getAllComments = () => {
@@ -69,7 +70,13 @@ class PostCommentsList extends Component {
                     )}
                     <td>
                         <div className={cssClass.Actions}>
-                            <Link to={"/admin-panel/comments/edit/" + comment.id + "/"}>
+                            <Link
+                                to={
+                                    "/admin-panel/comments/edit/" +
+                                    comment.id +
+                                    "/"
+                                }
+                            >
                                 <Button>Edit</Button>
                             </Link>
                         </div>
@@ -108,9 +115,12 @@ class PostCommentsList extends Component {
         }
 
         return (
-            <div>
-                {this.props.allComments ? commentsListTable : <Spinner />}
-            </div>
+            <Aux>
+                <div>
+                    <div className={cssClass.Title}>Comments List</div>
+                    {this.props.allComments ? commentsListTable : <Spinner />}
+                </div>
+            </Aux>
         );
     }
 }

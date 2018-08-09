@@ -1,6 +1,6 @@
 .OuterWrapper {
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 25px;
     overflow-x: auto;
     width: 80%;
     box-shadow: 0 2px 3px #ccc;
@@ -34,4 +34,12 @@
 
 .Actions {
     margin-bottom: 10px;
+}
+
+.Title {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 25px;
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 80%;
 }

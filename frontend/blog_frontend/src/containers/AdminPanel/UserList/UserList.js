@@ -7,6 +7,7 @@ import Spinner from "../../../components/UI/Spinner/Spinner";
 import cssClass from "./UserList.css";
 import Button from "../../../components/UI/Button/Button";
 import AxiosInstance from "../../../AxiosInstance";
+import Aux from "../../../hoc/Aux/Aux";
 
 class UserList extends Component {
     getUsersList = () => {
@@ -107,7 +108,12 @@ class UserList extends Component {
             );
         }
 
-        return <div>{this.props.userList ? userListTable : null}</div>;
+        return (
+            <Aux>
+                <div className={cssClass.Title}>Users List</div>
+                <div>{this.props.userList ? userListTable : null}</div>
+            </Aux>
+        );
     }
 }
 

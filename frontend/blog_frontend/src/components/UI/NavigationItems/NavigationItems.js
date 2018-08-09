@@ -12,18 +12,12 @@ const navigationItems = props => {
                     <NavLink style={{ textDecoration: "none" }} to="/">
                         <NavigationItem>Home</NavigationItem>
                     </NavLink>
-                    <NavLink
+                    <a
                         style={{ textDecoration: "none" }}
-                        to="/about-author/"
+                        href="https://github.com/dojutsu-user"
                     >
                         <NavigationItem>About Author</NavigationItem>
-                    </NavLink>
-                    <NavLink
-                        style={{ textDecoration: "none" }}
-                        to="/author-portfolio/"
-                    >
-                        <NavigationItem>Portfolio</NavigationItem>
-                    </NavLink>
+                    </a>
                     {props.isAuth ? (
                         <NavLink
                             style={{ textDecoration: "none" }}

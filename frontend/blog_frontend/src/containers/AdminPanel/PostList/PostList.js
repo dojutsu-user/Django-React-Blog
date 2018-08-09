@@ -7,6 +7,7 @@ import * as actions from "../../../store/actions/index";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import Button from "../../../components/UI/Button/Button";
 import AxiosInstance from "../../../AxiosInstance";
+import Aux from "../../../hoc/Aux/Aux";
 
 class PostList extends Component {
     getAllPosts = () => {
@@ -105,7 +106,12 @@ class PostList extends Component {
             );
         }
 
-        return <div>{this.props.allPosts ? postsListTable : <Spinner />}</div>;
+        return (
+            <Aux>
+                <div className={cssClass.Title}>All Posts</div>
+                <div>{this.props.allPosts ? postsListTable : <Spinner />}</div>
+            </Aux>
+        );
     }
 }
 
