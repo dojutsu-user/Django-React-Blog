@@ -26,5 +26,6 @@ urlpatterns = [
     path('auth/registration/', include('rest_auth.registration.urls')),
     path('dashboard/', include('api.dashboard.urls')),
     path('comments/', include('api.comment.urls')),
-    path('docs/', include_docs_urls(title='Blog API Documentation'))
+    path('docs/', include_docs_urls(title='Blog API Documentation')),
+    path('register/', include('api.registration.urls')),
 ]

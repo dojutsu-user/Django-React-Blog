@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
+from django.utils import timezone
 
 from .utils import unique_slug_generator
 
@@ -52,3 +53,13 @@ def generate_unique_slug_for_posts(sender, instance, created, *args, **kwargs):
     if created:
         instance.slug = unique_slug_generator(instance)
         instance.save()
+
+
+@receiver(pre_save, sender=Post)
+def update_published_on(sender, instance, **kwargs):
+    """Update The Date Of 'Published On' When The Post Gets Published"""
+
+    if instance.id:
+        old_value = Post.objects.get(pk=instance.id).published_on
+        if not old_value:
+            instance.published_on = timezone.now()
