@@ -1,4 +1,9 @@
-export const checkValidity = (value, rules, inputIndentifier = null) => {
+export const checkValidity = (
+    value,
+    rules,
+    inputIndentifier = null,
+    password = null
+) => {
     let isValid = true;
     if (!rules) {
         return true;
@@ -17,8 +22,7 @@ export const checkValidity = (value, rules, inputIndentifier = null) => {
         isValid = pattern.test(value) && isValid;
     }
     if (inputIndentifier === "password1") {
-        isValid =
-            this.state.userRegistrationForm.password.value === value && isValid;
+        isValid = password === value && isValid;
     }
     return isValid;
 };

@@ -114,7 +114,8 @@ class UserRegistration extends Component {
         updatedFormElement.valid = checkValidity(
             updatedFormElement.value,
             updatedFormElement.validation,
-            inputIndentifier
+            inputIndentifier,
+            this.state.userRegistrationForm.password.value
         );
         updatedFormElement.touched = true;
         updatedUserCreationForm[inputIndentifier] = updatedFormElement;
