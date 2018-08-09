@@ -8,6 +8,7 @@ import Spinner from "../../../components/UI/Spinner/Spinner";
 import Aux from "../../../hoc/Aux/Aux";
 import * as actions from "../../../store/actions/index";
 import AxiosInstance from "../../../AxiosInstance";
+import { checkValidity } from "../../../shared/checkValidity";
 
 class CreateUser extends Component {
     state = {
@@ -118,27 +119,6 @@ class CreateUser extends Component {
             .catch(error => console.log(error.response.data));
     }
 
-    checkValidity = (value, rules) => {
-        let isValid = true;
-        if (!rules) {
-            return true;
-        }
-        if (rules.required) {
-            isValid = (value !== "" || value !== null) && isValid;
-        }
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid;
-        }
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid;
-        }
-        if (rules.isEmail) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(value) && isValid;
-        }
-        return isValid;
-    };
-
     inputChangedHandler = (event, inputIndentifier) => {
         const updatedUserCreationForm = {
             ...this.state.userCreationForm
@@ -152,7 +132,7 @@ class CreateUser extends Component {
             updatedFormElement.touched = true;
         } else {
             updatedFormElement.value = event.target.value;
-            updatedFormElement.valid = this.checkValidity(
+            updatedFormElement.valid = checkValidity(
                 updatedFormElement.value,
                 updatedFormElement.validation
             );

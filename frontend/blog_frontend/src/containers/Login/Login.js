@@ -8,6 +8,7 @@ import * as actions from "../../store/actions/index";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import Aux from "../../hoc/Aux/Aux";
 import Button from "../../components/UI/Button/Button";
+import {checkValidity} from "../../shared/checkValidity";
 
 class Login extends Component {
     state = {
@@ -54,27 +55,6 @@ class Login extends Component {
         this.props.onAuthLogin(loginCredentials);
     };
 
-    checkValidity(value, rules) {
-        let isValid = true;
-        if (!rules) {
-            return true;
-        }
-
-        if (rules.required) {
-            isValid = value.trim() !== "" && isValid;
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid;
-        }
-
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid;
-        }
-
-        return isValid;
-    }
-
     inputChangedHandler(event, inputIdentifier) {
         const updatedLoginForm = {
             ...this.state.loginForm
@@ -83,7 +63,7 @@ class Login extends Component {
             ...updatedLoginForm[inputIdentifier]
         };
         updatedFormElement.value = event.target.value;
-        updatedFormElement.valid = this.checkValidity(
+        updatedFormElement.valid = checkValidity(
             updatedFormElement.value,
             updatedFormElement.validation
         );

@@ -7,6 +7,7 @@ import Button from "../../components/UI/Button/Button";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import Aux from "../../hoc/Aux/Aux";
 import * as actions from "../../store/actions/index";
+import { checkValidity } from "../../shared/checkValidity";
 
 class UserRegistration extends Component {
     state = {
@@ -102,32 +103,6 @@ class UserRegistration extends Component {
         isUserRegistrationFormValid: false
     };
 
-    checkValidity = (value, rules, inputIndentifier) => {
-        let isValid = true;
-        if (!rules) {
-            return true;
-        }
-        if (rules.required) {
-            isValid = (value !== "" || value !== null) && isValid;
-        }
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid;
-        }
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid;
-        }
-        if (rules.isEmail) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(value) && isValid;
-        }
-        if (inputIndentifier === "password1") {
-            isValid =
-                this.state.userRegistrationForm.password.value === value &&
-                isValid;
-        }
-        return isValid;
-    };
-
     inputChangedHandler = (event, inputIndentifier) => {
         const updatedUserCreationForm = {
             ...this.state.userRegistrationForm
@@ -136,7 +111,7 @@ class UserRegistration extends Component {
             ...this.state.userRegistrationForm[inputIndentifier]
         };
         updatedFormElement.value = event.target.value;
-        updatedFormElement.valid = this.checkValidity(
+        updatedFormElement.valid = checkValidity(
             updatedFormElement.value,
             updatedFormElement.validation,
             inputIndentifier
