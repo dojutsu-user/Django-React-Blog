@@ -65,3 +65,5 @@ API Documentation is generated using the default tool provided by Django Rest Fr
 =
 ![screencapture-localhost-3000-dashboard-2018-08-09-00_54_56](https://user-images.githubusercontent.com/29149191/43859745-2d61b030-9b6f-11e8-9c49-90e08c054647.png)
 =
+![screencapture-localhost-3000-register-2018-08-09-17_26_33](https://user-images.githubusercontent.com/29149191/43897437-9ae18b46-9bf9-11e8-8a20-ad5c5c628963.png)
+=
