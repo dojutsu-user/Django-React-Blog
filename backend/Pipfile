@@ -10,6 +10,7 @@ django-cors-headers = "*"
 django-rest-auth = {extras = ["with-social"]}
 djangorestframework-jwt = "*"
 django-allauth = "*"
+openapi-codec = "*"
 
 [dev-packages]
 
