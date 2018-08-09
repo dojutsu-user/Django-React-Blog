@@ -10,14 +10,20 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 
 class CreatePost extends Component {
     state = {
-        postForm: {
+        postCreationForm: {
             title: {
                 elementType: "input",
                 elementConfig: {
                     type: "input",
                     placeholder: "Title Of The Post"
                 },
-                value: ""
+                value: "",
+                validation: {
+                    required: true,
+                    minLength: 10
+                },
+                valid: false,
+                touched: false
             },
             body: {
                 elementType: "textarea",
@@ -25,7 +31,13 @@ class CreatePost extends Component {
                     type: "textarea",
                     placeholder: "Body Of The Post"
                 },
-                value: ""
+                value: "",
+                validation: {
+                    required: true,
+                    minLength: 10
+                },
+                valid: false,
+                touched: false
             },
             short_description: {
                 elementType: "input",
@@ -33,28 +45,72 @@ class CreatePost extends Component {
                     type: "input",
                     placeholder: "Short Description Of The Post"
                 },
-                value: ""
+                value: "",
+                validation: {
+                    required: true,
+                    minLength: 10,
+                    maxLength: 200
+                },
+                valid: false,
+                touched: false
             }
-        }
+        },
+        ispostCreationFormValid: false
     };
 
-    inputChangedHandler(event, inputIdentifier) {
-        const updatedPostForm = {
-            ...this.state.postForm,
-            [inputIdentifier]: {
-                ...this.state.postForm[inputIdentifier],
-                value: event.target.value
-            }
-        };
-        this.setState({ postForm: updatedPostForm });
-    }
+    checkValidity = (value, rules) => {
+        let isValid = true;
+        if (!rules) {
+            return true;
+        }
+        if (rules.required) {
+            isValid = (value !== "" || value !== null) && isValid;
+        }
+        if (rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid;
+        }
+        if (rules.maxLength) {
+            isValid = value.length <= rules.maxLength && isValid;
+        }
+        if (rules.isEmail) {
+            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+            isValid = pattern.test(value) && isValid;
+        }
+        return isValid;
+    };
 
-    createPost = event => {
+    inputChangedHandler = (event, inputIndentifier) => {
+        const updatedPostCreationForm = {
+            ...this.state.postCreationForm
+        };
+        const updatedFormElement = {
+            ...updatedPostCreationForm[inputIndentifier]
+        };
+        updatedFormElement.value = event.target.value;
+        updatedFormElement.valid = this.checkValidity(
+            updatedFormElement.value,
+            updatedFormElement.validation
+        );
+        updatedFormElement.touched = true;
+        updatedPostCreationForm[inputIndentifier] = updatedFormElement;
+        let isFormValid = true;
+        for (let inputIndentifier in updatedPostCreationForm) {
+            isFormValid =
+                updatedPostCreationForm[inputIndentifier].valid && isFormValid;
+        }
+        this.setState({
+            postCreationForm: updatedPostCreationForm,
+            ispostCreationFormValid: isFormValid
+        });
+    };
+
+    onFormSubmitEventHandler = event => {
         event.preventDefault();
         const postData = {
-            title: this.state.postForm.title.value,
-            body: this.state.postForm.body.value,
-            short_description: this.state.postForm.short_description.value
+            title: this.state.postCreationForm.title.value,
+            body: this.state.postCreationForm.body.value,
+            short_description: this.state.postCreationForm.short_description
+                .value
         };
         const config = {
             headers: {
@@ -67,50 +123,63 @@ class CreatePost extends Component {
 
     render() {
         let formElements = [];
-        for (let key in this.state.postForm) {
+        for (let key in this.state.postCreationForm) {
             formElements.push({
                 id: key,
-                config: this.state.postForm[key]
+                config: this.state.postCreationForm[key]
             });
         }
 
-        let form = (
-            <Aux>
-                <h1
-                    style={{
-                        fontFamily: "Roboto, sans-serif",
-                        fontWeight: "200"
-                    }}
-                >
-                    Create A New Post
-                </h1>
-                <form onSubmit={this.createPost}>
-                    {formElements.map(formElement => (
-                        <Input
-                            key={formElement.id}
-                            elementType={formElement.config.elementType}
-                            elementConfig={formElement.config.elementConfig}
-                            value={formElement.config.value}
-                            changed={event =>
-                                this.inputChangedHandler(event, formElement.id)
-                            }
-                        />
-                    ))}
-                    <Button>Submit</Button>
-                </form>
-            </Aux>
-        );
-        if (this.props.loading) {
-            form = <Spinner />;
+        let form = <Spinner />;
+        if (this.state.postCreationForm) {
+            form = (
+                <Aux>
+                    <h1
+                        style={{
+                            fontFamily: "Roboto, sans-serif",
+                            fontWeight: "200"
+                        }}
+                    >
+                        Create A New Post
+                    </h1>
+                    <form onSubmit={this.onFormSubmitEventHandler}>
+                        {formElements.map(formElement => (
+                            <Input
+                                key={formElement.id}
+                                elementType={formElement.config.elementType}
+                                elementConfig={formElement.config.elementConfig}
+                                value={formElement.config.value}
+                                changed={event =>
+                                    this.inputChangedHandler(
+                                        event,
+                                        formElement.id
+                                    )
+                                }
+                                invalid={!formElement.config.valid}
+                                shouldValidate={formElement.config.validation}
+                                touched={formElement.config.touched}
+                            />
+                        ))}
+                        <Button disabled={!this.state.ispostCreationFormValid}>
+                            Submit
+                        </Button>
+                    </form>
+                </Aux>
+            );
         }
-        return <div className={cssClass.OuterWrapper}>{form}</div>;
+
+        return this.props.loading ? (
+            <Spinner />
+        ) : (
+            <div className={cssClass.OuterWrapper}>{form}</div>
+        );
     }
 }
 
 const mapStateToProps = state => {
     return {
         token: state.auth.token,
-        loading: state.post.loading,
+        loading: state.post.loading
     };
 };
 
