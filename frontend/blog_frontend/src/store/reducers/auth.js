@@ -24,6 +24,28 @@ const authLogout = (state, action) => {
     return updateObject(state, { token: null, username: null });
 };
 
+const userRegistrationInit = (state, action) => {
+    return updateObject(state, { token: null, username: null, loading: true });
+};
+
+const userRegistrationSuccess = (state, action) => {
+    return updateObject(state, {
+        token: null,
+        username: null,
+        loading: false,
+        loginRedirectURL: "/login"
+    });
+};
+
+const userRegistrationFail = (state, action) => {
+    return updateObject(state, {
+        token: null,
+        username: null,
+        loading: false,
+        loginRedirectURL: "/"
+    });
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_LOGIN_INIT:
@@ -32,6 +54,12 @@ const reducer = (state = initialState, action) => {
             return authLoginSuccess(state, action);
         case actionTypes.AUTH_LOGOUT:
             return authLogout(state, action);
+        case actionTypes.USER_REGISTRATION_INIT:
+            return userRegistrationInit(state, action);
+        case actionTypes.USER_REGISTRATION_SUCCESS:
+            return userRegistrationSuccess(state, action);
+        case actionTypes.USER_REGISTRATION_FAIL:
+            return userRegistrationFail(state, action);
         default:
             return state;
     }

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import NavigationItem from "./NavigationItem/NavigationItem";
 import cssClass from "./NavigationItems.css";
+import Aux from "../../../hoc/Aux/Aux";
 
 const navigationItems = props => {
     return (
@@ -26,12 +27,20 @@ const navigationItems = props => {
                             <NavigationItem>Dashboard</NavigationItem>
                         </NavLink>
                     ) : (
-                        <NavLink
-                            style={{ textDecoration: "none" }}
-                            to="/login/"
-                        >
-                            <NavigationItem>Login</NavigationItem>
-                        </NavLink>
+                        <Aux>
+                            <NavLink
+                                style={{ textDecoration: "none" }}
+                                to="/login"
+                            >
+                                <NavigationItem>Login</NavigationItem>
+                            </NavLink>
+                            <NavLink
+                                style={{ textDecoration: "none" }}
+                                to="/register"
+                            >
+                                <NavigationItem>Register</NavigationItem>
+                            </NavLink>
+                        </Aux>
                     )}
                 </span>
             </ul>

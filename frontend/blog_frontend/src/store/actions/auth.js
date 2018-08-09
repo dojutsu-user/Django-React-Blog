@@ -87,3 +87,41 @@ export const authLoginCheckState = () => {
         }
     };
 };
+
+export const userRegistrationInit = () => {
+    return {
+        type: actionsTypes.USER_REGISTRATION_INIT
+    };
+};
+
+export const userRegistrationSuccess = () => {
+    return {
+        type: actionsTypes.USER_REGISTRATION_SUCCESS
+    };
+};
+
+export const userRegistrationFail = () => {
+    return {
+        type: actionsTypes.USER_REGISTRATION_FAIL
+    };
+};
+
+export const userRegistration = (data, moveToLoginPage) => {
+    return dispatch => {
+        dispatch(userRegistrationInit());
+        AxiosInstance.post("/register/", data)
+            .then(response => {
+                dispatch(userRegistrationSuccess());
+                alert("Registered Successfully. You Can Now Login.");
+                moveToLoginPage("/login");
+            })
+            .catch(error => {
+                dispatch(userRegistrationFail());
+                let errors = "ERROR..!!\n";
+                for (let key in error.response.data) {
+                    errors = errors + "-> " + error.response.data[key] + "\n";
+                }
+                alert(errors);
+            });
+    };
+};

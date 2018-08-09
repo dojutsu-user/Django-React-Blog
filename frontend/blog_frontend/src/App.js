@@ -23,6 +23,7 @@ import AdminEditPost from "./containers/AdminPanel/EditPost/EditPost";
 import AdminPostCommentsList from "./containers/AdminPanel/PostCommentsList/PostCommentsList";
 import AdminAllCommentsList from "./containers/AdminPanel/AllCommentsList/AllCommentsList";
 import AdminCommentEdit from "./containers/AdminPanel/CommentEdit/CommentEdit";
+import UserRegistration from "./containers/UserRegistartion/UserRegistration";
 
 class App extends Component {
     componentDidMount() {
@@ -89,6 +90,7 @@ class App extends Component {
 
         const routesForAnonymousUsers = (
             <Switch>
+                <Route path="/register" component={UserRegistration} />
                 <Route path="/login" component={Login} />
                 <Route path="/posts/view/:slug/" component={PostBody} />
                 <Route path="/" component={PostList} />
